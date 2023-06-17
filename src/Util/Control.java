@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 public class Control {
 
     static String appPath = System.getProperties().getProperty("user.dir");
-    static File fichero = new File(appPath + "\\miApp.tmp");
+    public static File fichero = new File(appPath + "\\miApp.tmp");
     static int segundos = 20;
 
     public Control() {
@@ -94,10 +94,18 @@ public class Control {
     }
 
     public static void cerrarApp() {
-        if (fichero.exists()) {
-            System.out.println("existe el fichero");
-            fichero.delete();
-            System.exit(0);
+        int i = JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?");
+        if (i == 0) {
+            if (Control.fichero.exists()) {
+                if (Control.fichero.delete()) {
+                    System.err.println("se borro");
+                    System.exit(0);//cierra aplicacion
+                } else {
+                    System.err.println("no se borro. hubo un error");
+                }
+            } else {
+                System.exit(0);
+            }
         }
     }
 

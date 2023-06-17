@@ -38,6 +38,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -283,6 +285,26 @@ public class Principal extends javax.swing.JFrame {
         auxerrorExp = new Modelo.Error();
         auxerrorPA = new Modelo.Error();
         auxerrorPu = new Modelo.Error();
+
+        //Eliminar Fichero miApp.tmp al cerrar la aplicacion al dar click en la 'X'
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int i = JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?");
+                if (i == 0) {
+                    if (Control.fichero.exists()) {
+                        if (Control.fichero.delete()) {
+                            System.err.println("se borro");
+                            System.exit(0);//cierra aplicacion
+                        } else {
+                            System.err.println("no se borro. hubo un error");
+                        }
+                    } else {
+                        System.exit(0);
+                    }
+                }
+            }
+        });
 
         //*********************************************************
     }
@@ -3168,63 +3190,64 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnautenticarActionPerformed
 
     private boolean comprueba() {
-        boolean result=false;
+        boolean result = false;
         List<DimensionesRelevantes> lista = modeloexp.getDimensionesRelevantesList();
         for (DimensionesRelevantes lista1 : lista) {
             //System.out.println("Las dimensiones son:  " + (String)cbdimrelv.getSelectedItem() +"  esta es la bd     " +lista1.getNombDimension()+"\n");
-            if (lista1.getNombDimension().equals((String)cbdimrelv.getSelectedItem())) {
+            if (lista1.getNombDimension().equals((String) cbdimrelv.getSelectedItem())) {
                 System.out.println("***La dimension relevante esta en el modelo***");
                 //int pos = lista.indexOf(cbdimrelv.getSelectedItem());
                 DimensionesRelevantes dr = lista1;//lista.get(pos);
-                String auxexp=controlformula.MostrarFR(dr.getIddimensionesRelevantes()).getFormulacion();
-                ArrayList<String> auxlist=guardaPartes(expresionlogica);
-                result=igualExpresion(auxlist,auxexp);
+                String auxexp = controlformula.MostrarFR(dr.getIddimensionesRelevantes()).getFormulacion();
+                ArrayList<String> auxlist = guardaPartes(expresionlogica);
+                result = igualExpresion(auxlist, auxexp);
                 JOptionPane.showMessageDialog(null, "Esta es la formula de la base de datos" + result);
-            } 
+            }
         }
-        return  result;
+        return result;
     }
-    
+
     public ArrayList<String> guardaPartes(String valor) {
-        ArrayList<String> element=new ArrayList();
-        String auxvalor=valor;
-        int indice=-1;
-        while (posicionOperador(auxvalor)!=-1) {            
-            int auxpos=posicionOperador(auxvalor);
-            element.add(auxvalor.substring(indice+1,auxpos));
-            auxvalor=auxvalor.substring(auxpos+1);
+        ArrayList<String> element = new ArrayList();
+        String auxvalor = valor;
+        int indice = -1;
+        while (posicionOperador(auxvalor) != -1) {
+            int auxpos = posicionOperador(auxvalor);
+            element.add(auxvalor.substring(indice + 1, auxpos));
+            auxvalor = auxvalor.substring(auxpos + 1);
         }
         element.add(auxvalor);
         return element;
     }
-    
-    public boolean igualExpresion(ArrayList<String> list,String valor){
+
+    public boolean igualExpresion(ArrayList<String> list, String valor) {
         /**
-         * list es lo que escribe el estudiante
-         * comprueba lo escrito pore el estudiante con la base de datos
+         * list es lo que escribe el estudiante comprueba lo escrito pore el
+         * estudiante con la base de datos
          */
-        boolean result=true;
-        String auxvalor=valor;
-        int indice=-1;
-        while (posicionOperador(auxvalor)!=-1) {            
-            int auxpos=posicionOperador(auxvalor);
-            if (!list.contains(auxvalor.substring(indice+1,auxpos))) {
-                result=false;
+        boolean result = true;
+        String auxvalor = valor;
+        int indice = -1;
+        while (posicionOperador(auxvalor) != -1) {
+            int auxpos = posicionOperador(auxvalor);
+            if (!list.contains(auxvalor.substring(indice + 1, auxpos))) {
+                result = false;
                 break;
             }
-            auxvalor=auxvalor.substring(auxpos+1);
-        }if (!list.contains(auxvalor)) {
-            result=false;
+            auxvalor = auxvalor.substring(auxpos + 1);
+        }
+        if (!list.contains(auxvalor)) {
+            result = false;
         }
         return result;
     }
-    
+
     private void btncalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalculoActionPerformed
         // TODO add your handling code here:
         comprueba();
         calculoExpresionNumerica();
         String aux = lbldim1.getText();
-        lbldim1.setText(aux + "= " +resultado);
+        lbldim1.setText(aux + "= " + resultado);
         Object[] options = {"Si", "No"};
         int action = JOptionPane.showOptionDialog(null, "Desea registrar el calculo realizado", "Información",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
@@ -4761,7 +4784,7 @@ public class Principal extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        /*try {
+ /*try {
          for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
          if ("Nimbus".equals(info.getName())) {
          javax.swing.UIManager.setLookAndFeel(info.getClassName());
