@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ejercicios_autoevaluativos" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6cd57aea-6968-4671-8662-7f9ff8491d1f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     ejercicio.`idejercicio` AS ejercicio_idejercicio,
+     ejercicio.`pregunta` AS ejercicio_pregunta,
+     ejercicio.`foto_ejercicio` AS ejercicio_foto_ejercicio,
+     ejercicio.`complementos_pregunta_idcomplementos_pregunta` AS ejercicio_complementos_pregunta_idcomplementos_pregunta,
+     ejercicio.`idcomplementos_respuesta` AS ejercicio_idcomplementos_respuesta,
+     ejercicio.`idtipoejercicio` AS ejercicio_idtipoejercicio,
+     ejercicio.`idtema` AS ejercicio_idtema,
+     complementos_pregunta.`idcomplementos_pregunta` AS complementos_pregunta_idcomplementos_pregunta,
+     complementos_pregunta.`inc_A` AS complementos_pregunta_inc_A,
+     complementos_pregunta.`inc_B` AS complementos_pregunta_inc_B,
+     complementos_pregunta.`inc_C` AS complementos_pregunta_inc_C,
+     complementos_pregunta.`inc_D` AS complementos_pregunta_inc_D,
+     complementos_pregunta.`inc_E` AS complementos_pregunta_inc_E
+FROM
+     `complementos_pregunta` complementos_pregunta INNER JOIN `ejercicio` ejercicio ON complementos_pregunta.`idcomplementos_pregunta` = ejercicio.`complementos_pregunta_idcomplementos_pregunta`]]>
+	</queryString>
+	<field name="ejercicio_idejercicio" class="java.lang.Integer"/>
+	<field name="ejercicio_pregunta" class="java.lang.String"/>
+	<field name="ejercicio_foto_ejercicio" class="java.io.InputStream"/>
+	<field name="ejercicio_complementos_pregunta_idcomplementos_pregunta" class="java.lang.Integer"/>
+	<field name="ejercicio_idcomplementos_respuesta" class="java.lang.Integer"/>
+	<field name="ejercicio_idtipoejercicio" class="java.lang.Integer"/>
+	<field name="ejercicio_idtema" class="java.lang.Integer"/>
+	<field name="complementos_pregunta_idcomplementos_pregunta" class="java.lang.Integer"/>
+	<field name="complementos_pregunta_inc_A" class="java.lang.String"/>
+	<field name="complementos_pregunta_inc_B" class="java.lang.String"/>
+	<field name="complementos_pregunta_inc_C" class="java.lang.String"/>
+	<field name="complementos_pregunta_inc_D" class="java.lang.String"/>
+	<field name="complementos_pregunta_inc_E" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="91" y="20" width="418" height="32" uuid="cf9644af-3e96-4526-b3dd-4ba4670be928"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ejercicios autoevaluativos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="0" width="100" height="20" uuid="8aa9e872-7b00-4039-8379-79767e0fe46a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pregunta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="2" width="100" height="20" uuid="a8f4f899-dfbb-45fe-bcc7-6d7a3aeaf0aa"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Foto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="2" width="100" height="20" uuid="033164d1-911b-4c02-9974-6cde6e956c69"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Incisoss]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="157" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="138" height="99" uuid="864a6333-ff17-4745-b1d3-a800d744e58a"/>
+				<textFieldExpression><![CDATA[$F{ejercicio_pregunta}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="172" y="0" width="160" height="112" uuid="0a0a35d0-d18e-48a4-8619-8105d0c3d8c3"/>
+				<imageExpression><![CDATA[$F{ejercicio_foto_ejercicio}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="376" y="0" width="181" height="20" uuid="14e064b0-bfc7-4bb8-8551-5e033d3f4d60"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="28" width="181" height="20" uuid="1a2d76a1-9452-454a-98a7-1e230e47fbf0"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_B}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="54" width="181" height="20" uuid="9f9fe12c-e94f-47e4-83f0-f38d6e34a047"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_C}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="79" width="181" height="20" uuid="0825bd2e-ce44-4757-81b6-b88ecafafd77"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_D}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="105" width="181" height="20" uuid="aa86f167-c5ca-482f-9986-9b1a2c9e56c4"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_E}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="437" y="17" width="80" height="20" uuid="bb2099c0-ba91-45aa-ba6b-222b358fd47c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pag "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="517" y="17" width="40" height="20" uuid="feb486bc-932f-4296-a497-122d291ec9cf"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="10" y="10" width="100" height="20" uuid="ec4a1854-abc9-46e4-ba7f-cf8f4dc7ca50"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

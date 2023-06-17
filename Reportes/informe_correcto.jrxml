@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informe_correcto" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8673d289-4650-418b-8fd8-57a9820b59e7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="bad40f10-c2bf-40d2-b085-75b211266fe7">
+		<parameter name="id_dim_rele" class="java.lang.Integer"/>
+		<queryString>
+			<![CDATA[SELECT
+     dimensiones.`iddimensiones` AS dimensiones_iddimensiones,
+     dimensiones.`nombmedid` AS dimensiones_nombmedid,
+     dimensiones.`descrip_medida` AS dimensiones_descrip_medida,
+     dimensiones.`criterio_de_uso` AS dimensiones_criterio_de_uso,
+     dimensiones.`fotodim` AS dimensiones_fotodim,
+     dimensiones.`idinstrumento` AS dimensiones_idinstrumento,
+     dimensiones.`posturas_idposturas` AS dimensiones_posturas_idposturas,
+     dimensiones.`idpuntantrop` AS dimensiones_idpuntantrop,
+     dimensiones.`sigla` AS dimensiones_sigla,
+     dimensiones.`idposiciondescripcion` AS dimensiones_idposiciondescripcion,
+     dimensiones_relevantes.`iddimensiones_relevantes` AS dimensiones_relevantes_iddimensiones_relevantes,
+     dimensiones_relevantes.`nomb_dimension` AS dimensiones_relevantes_nomb_dimension,
+     dimensiones_relevantes.`dimensionrelevfoto` AS dimensiones_relevantes_dimensionrelevfoto,
+     dimensiones_relevantes.`descripcion` AS dimensiones_relevantes_descripcion,
+     dimensiones_relevantes_has_dimensionesantrop.`dr_iddimensionrelevante` AS dimensiones_relevantes_has_dimensionesantrop_dr_iddimensionrelev,
+     dimensiones_relevantes_has_dimensionesantrop.`da_iddimensiones` AS dimensiones_relevantes_has_dimensionesantrop_da_iddimensiones
+FROM
+     `dimensiones_relevantes` dimensiones_relevantes INNER JOIN `dimensiones_relevantes_has_dimensionesantrop` dimensiones_relevantes_has_dimensionesantrop ON dimensiones_relevantes.`iddimensiones_relevantes` = dimensiones_relevantes_has_dimensionesantrop.`dr_iddimensionrelevante`
+     INNER JOIN `dimensiones` dimensiones ON dimensiones_relevantes_has_dimensionesantrop.`da_iddimensiones` = dimensiones.`iddimensiones`
+WHERE dimensiones_relevantes_has_dimensionesantrop.`dr_iddimensionrelevante` = $P{id_dim_rele}
+
+]]>
+		</queryString>
+		<field name="dimensiones_relevantes_nomb_dimension" class="java.lang.String"/>
+		<field name="dimensiones_nombmedid" class="java.lang.String"/>
+		<field name="dimensiones_relevantes_iddimensiones_relevantes" class="java.lang.Integer"/>
+		<group name="dimensiones_relevantes_iddimensiones_relevantes">
+			<groupExpression><![CDATA[$F{dimensiones_relevantes_iddimensiones_relevantes}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="id_caso_estudio" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     dimensiones.`iddimensiones` AS dimensiones_iddimensiones,
+     dimensiones.`nombmedid` AS dimensiones_nombmedid,
+     dimensiones.`sigla` AS dimensiones_sigla,
+     dimensiones.`idposiciondescripcion` AS dimensiones_idposiciondescripcion,
+     experimentacion.`id_experimentacion` AS experimentacion_id_experimentacion,
+     experimentacion.`descripcion` AS experimentacion_descripcion,
+     experimentacion.`puestotrabaj` AS experimentacion_puestotrabaj,
+     experimentacion.`nombre` AS experimentacion_nombre,
+     formula_dr.`idformula_dr` AS formula_dr_idformula_dr,
+     formula_dr.`formulacion` AS formula_dr_formulacion,
+     formula_dr.`iddimension_relevante` AS formula_dr_iddimension_relevante,
+     dimensiones_relevantes.`iddimensiones_relevantes` AS dimensiones_relevantes_iddimensiones_relevantes,
+     dimensiones_relevantes.`nomb_dimension` AS dimensiones_relevantes_nomb_dimension,
+     dimensiones_relevantes.`dimensionrelevfoto` AS dimensiones_relevantes_dimensionrelevfoto,
+     dimensiones_relevantes.`descripcion` AS dimensiones_relevantes_descripcion,
+     puesto_dimensiones.`experimentacion_idexperimentacion` AS puesto_dimensiones_experimentacion_idexperimentacion,
+     puesto_dimensiones.`dimensionrelev_iddimensionrelev` AS puesto_dimensiones_dimensionrelev_iddimensionrelev,
+     dimensiones_relevantes_has_dimensionesantrop.`dr_iddimensionrelevante` AS dimensiones_relevantes_has_dimensionesantrop_dr_iddimensionrelev,
+     dimensiones_relevantes_has_dimensionesantrop.`da_iddimensiones` AS dimensiones_relevantes_has_dimensionesantrop_da_iddimensiones,
+     posiciones_descripcion.`idposiciones_descripcion` AS posiciones_descripcion_idposiciones_descripcion,
+     posiciones_descripcion.`descripcion` AS posiciones_descripcion_descripcion
+FROM
+     `dimensiones_relevantes` dimensiones_relevantes INNER JOIN `formula_dr` formula_dr ON dimensiones_relevantes.`iddimensiones_relevantes` = formula_dr.`iddimension_relevante`
+     INNER JOIN `puesto_dimensiones` puesto_dimensiones ON dimensiones_relevantes.`iddimensiones_relevantes` = puesto_dimensiones.`dimensionrelev_iddimensionrelev`
+     INNER JOIN `dimensiones_relevantes_has_dimensionesantrop` dimensiones_relevantes_has_dimensionesantrop ON dimensiones_relevantes.`iddimensiones_relevantes` = dimensiones_relevantes_has_dimensionesantrop.`dr_iddimensionrelevante`
+     INNER JOIN `dimensiones` dimensiones ON dimensiones_relevantes_has_dimensionesantrop.`da_iddimensiones` = dimensiones.`iddimensiones`
+     INNER JOIN `posiciones_descripcion` posiciones_descripcion ON dimensiones.`idposiciondescripcion` = posiciones_descripcion.`idposiciones_descripcion`
+     INNER JOIN `experimentacion` experimentacion ON puesto_dimensiones.`experimentacion_idexperimentacion` = experimentacion.`id_experimentacion`
+WHERE experimentacion.`id_experimentacion` = $P{id_caso_estudio}]]>
+	</queryString>
+	<field name="dimensiones_iddimensiones" class="java.lang.Integer"/>
+	<field name="dimensiones_nombmedid" class="java.lang.String"/>
+	<field name="dimensiones_sigla" class="java.lang.String"/>
+	<field name="dimensiones_idposiciondescripcion" class="java.lang.Integer"/>
+	<field name="experimentacion_id_experimentacion" class="java.lang.Integer"/>
+	<field name="experimentacion_descripcion" class="java.lang.String"/>
+	<field name="experimentacion_puestotrabaj" class="java.io.InputStream"/>
+	<field name="experimentacion_nombre" class="java.lang.String"/>
+	<field name="formula_dr_idformula_dr" class="java.lang.Integer"/>
+	<field name="formula_dr_formulacion" class="java.lang.String"/>
+	<field name="formula_dr_iddimension_relevante" class="java.lang.Integer"/>
+	<field name="dimensiones_relevantes_iddimensiones_relevantes" class="java.lang.Integer"/>
+	<field name="dimensiones_relevantes_nomb_dimension" class="java.lang.String"/>
+	<field name="dimensiones_relevantes_dimensionrelevfoto" class="java.lang.Object"/>
+	<field name="dimensiones_relevantes_descripcion" class="java.lang.String"/>
+	<field name="puesto_dimensiones_experimentacion_idexperimentacion" class="java.lang.Integer"/>
+	<field name="puesto_dimensiones_dimensionrelev_iddimensionrelev" class="java.lang.Integer"/>
+	<field name="dimensiones_relevantes_has_dimensionesantrop_dr_iddimensionrelev" class="java.lang.Integer"/>
+	<field name="dimensiones_relevantes_has_dimensionesantrop_da_iddimensiones" class="java.lang.Integer"/>
+	<field name="posiciones_descripcion_idposiciones_descripcion" class="java.lang.Integer"/>
+	<field name="posiciones_descripcion_descripcion" class="java.lang.String"/>
+	<group name="dimensiones_relevantes_iddimensiones_relevantes">
+		<groupExpression><![CDATA[$F{dimensiones_relevantes_iddimensiones_relevantes}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField>
+					<reportElement x="2" y="2" width="131" height="20" uuid="ada8d7ba-75d1-4a55-a62e-071afda035fe"/>
+					<textFieldExpression><![CDATA[$F{dimensiones_relevantes_nomb_dimension}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="143" y="0" width="159" height="48" uuid="35f09d14-af04-42dc-96ba-94a607e617a3"/>
+					<textFieldExpression><![CDATA[$F{formula_dr_formulacion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="317" y="30" width="140" height="20" uuid="857ba33a-94c1-4190-b67a-d9c95ec2b98c"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Dimensión antropométrica]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="477" y="30" width="95" height="20" uuid="32ceccf9-faa0-4fd0-bbf2-1c11cd739609"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Posición]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="dimensiones_iddimensiones">
+		<groupExpression><![CDATA[$F{dimensiones_iddimensiones}]]></groupExpression>
+		<groupHeader>
+			<band height="42">
+				<textField>
+					<reportElement x="317" y="2" width="140" height="30" uuid="b4bbe0ac-0a35-4faa-98a3-0523147a94ac"/>
+					<textFieldExpression><![CDATA[$F{dimensiones_nombmedid}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement isPrintRepeatedValues="false" x="477" y="2" width="95" height="40" uuid="898767ca-72db-4e61-947a-26bfe7dd3559"/>
+					<textFieldExpression><![CDATA[$F{posiciones_descripcion_descripcion}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="posiciones_descripcion_idposiciones_descripcion">
+		<groupExpression><![CDATA[$F{posiciones_descripcion_idposiciones_descripcion}]]></groupExpression>
+		<groupHeader>
+			<band height="23"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="223" y="29" width="192" height="25" uuid="5f7916cf-3038-453d-a24a-8eb4155dcea7"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informe correcto]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="142" splitType="Stretch">
+			<textField>
+				<reportElement x="358" y="12" width="214" height="63" uuid="c69c6c61-7d98-4830-b2f2-e5e4fff8344e"/>
+				<textFieldExpression><![CDATA[$F{experimentacion_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="12" width="153" height="20" uuid="d9f96696-f90d-4ab6-b69f-6a3ebe510296"/>
+				<textFieldExpression><![CDATA[$F{experimentacion_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="122" width="133" height="20" uuid="ac31f25e-a1a7-4826-86dd-8b33ab85364a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dimensión relevante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="122" width="100" height="20" uuid="b1043747-1fce-4c08-ae93-547a95138ace"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fórmula]]></text>
+			</staticText>
+			<image>
+				<reportElement x="223" y="12" width="114" height="93" uuid="3be89ece-e6be-4051-bca3-8be378ccc851"/>
+				<imageExpression><![CDATA[$F{experimentacion_puestotrabaj}]]></imageExpression>
+			</image>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="477" y="10" width="55" height="20" uuid="805427dc-91ae-46f2-a133-21295e69f9ac"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pag "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="532" y="10" width="40" height="20" uuid="02731420-46b7-463d-9374-5b6308879466"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="4" y="10" width="100" height="20" uuid="6647abee-24e5-4eef-9a09-1a3462a5ecee"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

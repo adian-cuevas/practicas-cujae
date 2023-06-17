@@ -1,0 +1,6 @@
+.settings
+/build
+/dist
+/nbproject
+/test
+miApp.tmp

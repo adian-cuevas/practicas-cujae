@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="errores_estudiante" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d38f2a6-ae4c-4058-bb4d-79180f4d8575">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Desarrollo\\NetbeansProjectEduardo\\Prueba5\\Reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     usuario.`idusuario` AS usuario_idusuario,
+     usuario.`apellido_1er` AS usuario_apellido_1er,
+     usuario.`apellido_2do` AS usuario_apellido_2do,
+     usuario.`nomb_usuario` AS usuario_nomb_usuario,
+     usuario.`contraseña` AS usuario_contraseña,
+     usuario.`rol_idrol` AS usuario_rol_idrol,
+     usuario.`nombre` AS usuario_nombre,
+     usuario_has_ejercicio.`usuario_idusuario` AS usuario_has_ejercicio_usuario_idusuario,
+     usuario_has_ejercicio.`nota` AS usuario_has_ejercicio_nota,
+     usuario_has_ejercicio.`idejercicios` AS usuario_has_ejercicio_idejercicios,
+     ejercicio.`idejercicio` AS ejercicio_idejercicio,
+     ejercicio.`pregunta` AS ejercicio_pregunta,
+     ejercicio.`foto_ejercicio` AS ejercicio_foto_ejercicio,
+     ejercicio.`complementos_pregunta_idcomplementos_pregunta` AS ejercicio_complementos_pregunta_idcomplementos_pregunta,
+     ejercicio.`idcomplementos_respuesta` AS ejercicio_idcomplementos_respuesta,
+     ejercicio.`idtipoejercicio` AS ejercicio_idtipoejercicio,
+     ejercicio.`idtema` AS ejercicio_idtema,
+     tema.`idtema` AS tema_idtema,
+     tema.`descripcion` AS tema_descripcion
+FROM
+     `usuario` usuario INNER JOIN `usuario_has_ejercicio` usuario_has_ejercicio ON usuario.`idusuario` = usuario_has_ejercicio.`usuario_idusuario`
+     INNER JOIN `ejercicio` ejercicio ON usuario_has_ejercicio.`idejercicios` = ejercicio.`idejercicio`
+     INNER JOIN `tema` tema ON ejercicio.`idtema` = tema.`idtema`
+WHERE
+     usuario.`idusuario` = $P{id}]]>
+	</queryString>
+	<field name="usuario_idusuario" class="java.lang.Integer"/>
+	<field name="usuario_apellido_1er" class="java.lang.String"/>
+	<field name="usuario_apellido_2do" class="java.lang.String"/>
+	<field name="usuario_nomb_usuario" class="java.lang.String"/>
+	<field name="usuario_contraseña" class="java.lang.String"/>
+	<field name="usuario_rol_idrol" class="java.lang.Integer"/>
+	<field name="usuario_nombre" class="java.lang.String"/>
+	<field name="usuario_has_ejercicio_usuario_idusuario" class="java.lang.Integer"/>
+	<field name="usuario_has_ejercicio_nota" class="java.lang.Integer"/>
+	<field name="usuario_has_ejercicio_idejercicios" class="java.lang.Integer"/>
+	<field name="ejercicio_idejercicio" class="java.lang.Integer"/>
+	<field name="ejercicio_pregunta" class="java.lang.String"/>
+	<field name="ejercicio_foto_ejercicio" class="java.lang.Object"/>
+	<field name="ejercicio_complementos_pregunta_idcomplementos_pregunta" class="java.lang.Integer"/>
+	<field name="ejercicio_idcomplementos_respuesta" class="java.lang.Integer"/>
+	<field name="ejercicio_idtipoejercicio" class="java.lang.Integer"/>
+	<field name="ejercicio_idtema" class="java.lang.Integer"/>
+	<field name="tema_idtema" class="java.lang.Integer"/>
+	<field name="tema_descripcion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Stretch">
+			<staticText>
+				<reportElement x="132" y="28" width="266" height="29" uuid="5413c6eb-51cd-4293-9993-448cfa197356"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Evaluación general del estudiante]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="73" width="411" height="20" uuid="bf2e62d5-bc2c-46a5-820f-341720b62dc8"/>
+				<textFieldExpression><![CDATA[$F{usuario_nomb_usuario}+" "+$F{usuario_apellido_1er}+" "+ $F{usuario_apellido_2do}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="132" y="2" width="100" height="20" uuid="03ea8cbd-0957-4141-ac6d-636f8e224282"/>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="56d68482-4ea4-47ce-96ec-bbe6ee40cbdf"/>
+				<text><![CDATA[Pregunta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="2" width="100" height="20" uuid="850a6135-9dea-4ffd-8250-f87b2dacf308"/>
+				<text><![CDATA[Evaluacion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="77" splitType="Stretch">
+			<textField>
+				<reportElement x="132" y="0" width="100" height="20" uuid="f6f73eec-14af-499a-83b6-1ff1efca2532"/>
+				<textFieldExpression><![CDATA[$F{tema_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="122" height="69" uuid="73d26793-9003-429b-b144-fc6284306e89"/>
+				<textFieldExpression><![CDATA[$F{ejercicio_pregunta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="4" width="100" height="20" uuid="efc45ae6-59a4-45b5-b65c-b953c22b49ba"/>
+				<textFieldExpression><![CDATA[$F{usuario_has_ejercicio_nota}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

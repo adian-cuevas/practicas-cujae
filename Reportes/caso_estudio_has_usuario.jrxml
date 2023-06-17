@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="errores_estudiantes_subreport1" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="96f6a1bf-a89a-4e12-8e8e-ae0b2a3258cb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     experimentacion.`id_experimentacion` AS experimentacion_id_experimentacion,
+     experimentacion.`puestotrabaj` AS experimentacion_puestotrabaj,
+     experimentacion.`nombre` AS experimentacion_nombre,
+     usuario.`idusuario` AS usuario_idusuario,
+     usuario.`apellido_1er` AS usuario_apellido_1er,
+     usuario.`apellido_2do` AS usuario_apellido_2do,
+     usuario.`nomb_usuario` AS usuario_nomb_usuario,
+     usuario.`contraseña` AS usuario_contraseña,
+     usuario.`rol_idrol` AS usuario_rol_idrol,
+     usuario.`nombre` AS usuario_nombre,
+     respuesta_experimentacion.`id` AS respuesta_experimentacion_id,
+     respuesta_experimentacion.`fecha` AS respuesta_experimentacion_fecha,
+     respuesta_experimentacion.`usuarioidusuario` AS respuesta_experimentacion_usuarioidusuario,
+     respuesta_experimentacion.`experimentacionid_experimentacion` AS respuesta_experimentacion_experimentacionid_experimentacion,
+     respuesta_experimentacion.`cant_total_errores` AS respuesta_experimentacion_cant_total_errores,
+     respuesta_experimentacion.`evaluación` AS respuesta_experimentacion_evaluación,
+     error.`idError` AS error_idError,
+     error.`descripcion` AS error_descripcion,
+     error.`cantidad` AS error_cantidad,
+     error.`respuesta_experimentacionid` AS error_respuesta_experimentacionid,
+     experimentacion.`descripcion` AS experimentacion_descripcion
+FROM
+     `experimentacion` experimentacion INNER JOIN `respuesta_experimentacion` respuesta_experimentacion ON experimentacion.`id_experimentacion` = respuesta_experimentacion.`experimentacionid_experimentacion`
+     INNER JOIN `usuario` usuario ON respuesta_experimentacion.`usuarioidusuario` = usuario.`idusuario`
+     INNER JOIN `error` error ON respuesta_experimentacion.`id` = error.`respuesta_experimentacionid`
+WHERE
+     usuario.`idusuario` = $P{id}]]>
+	</queryString>
+	<field name="experimentacion_id_experimentacion" class="java.lang.Integer"/>
+	<field name="experimentacion_descripcion" class="java.lang.String"/>
+	<field name="experimentacion_puestotrabaj" class="java.lang.Object"/>
+	<field name="experimentacion_nombre" class="java.lang.String"/>
+	<field name="usuario_idusuario" class="java.lang.Integer"/>
+	<field name="usuario_apellido_1er" class="java.lang.String"/>
+	<field name="usuario_apellido_2do" class="java.lang.String"/>
+	<field name="usuario_nomb_usuario" class="java.lang.String"/>
+	<field name="usuario_contraseña" class="java.lang.String"/>
+	<field name="usuario_rol_idrol" class="java.lang.Integer"/>
+	<field name="usuario_nombre" class="java.lang.String"/>
+	<field name="respuesta_experimentacion_id" class="java.lang.Integer"/>
+	<field name="respuesta_experimentacion_fecha" class="java.sql.Date"/>
+	<field name="respuesta_experimentacion_usuarioidusuario" class="java.lang.Integer"/>
+	<field name="respuesta_experimentacion_experimentacionid_experimentacion" class="java.lang.Integer"/>
+	<field name="respuesta_experimentacion_cant_total_errores" class="java.lang.Integer"/>
+	<field name="respuesta_experimentacion_evaluación" class="java.lang.Integer"/>
+	<field name="error_idError" class="java.lang.Integer"/>
+	<field name="error_descripcion" class="java.lang.String"/>
+	<field name="error_cantidad" class="java.lang.Integer"/>
+	<field name="error_respuesta_experimentacionid" class="java.lang.Integer"/>
+	<group name="id_experimentacion_group">
+		<groupExpression><![CDATA[$F{experimentacion_id_experimentacion}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<staticText>
+					<reportElement x="460" y="0" width="100" height="20" uuid="67964874-eafa-4414-ba63-9c5ebb9d038a"/>
+					<text><![CDATA[Cantidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="166" y="0" width="272" height="20" uuid="5e21eb76-b48e-40b0-8b82-cb23bcce94c9"/>
+					<text><![CDATA[Descripcion]]></text>
+				</staticText>
+				<textField>
+					<reportElement isPrintRepeatedValues="false" x="9" y="0" width="100" height="20" uuid="fedb9605-a573-422b-a611-af172aacda08"/>
+					<textFieldExpression><![CDATA[$F{experimentacion_nombre}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="67">
+				<staticText>
+					<reportElement x="12" y="33" width="130" height="20" uuid="0801ffbb-52a7-48b1-98da-ea324e0b7f15"/>
+					<text><![CDATA[Nota de la experimentacion]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="156" y="33" width="100" height="20" uuid="7e5a4871-902f-45c9-bd11-c893013f7237"/>
+					<textFieldExpression><![CDATA[$F{respuesta_experimentacion_evaluación}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="156" y="13" width="100" height="20" uuid="7567e11f-0abb-4f3a-82fc-5c28985c40dd"/>
+					<textFieldExpression><![CDATA[$F{respuesta_experimentacion_cant_total_errores}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="12" y="13" width="100" height="20" uuid="772c91a4-abdf-43c2-8727-bfa68a6ce705"/>
+					<text><![CDATA[Cantidad de errores total]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79">
+			<staticText>
+				<reportElement x="98" y="28" width="262" height="34" uuid="92ffb454-3c86-4988-a680-2620c366ff39"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dificultades del estudiante]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="2" width="130" height="20" uuid="117e4d37-5faa-4d1b-9f33-a02e7cf1b7ba"/>
+				<text><![CDATA[Nombre Experimentacion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="460" y="0" width="100" height="20" uuid="c550a5eb-aff1-49d4-b1f2-de57594e4012"/>
+				<textFieldExpression><![CDATA[$F{error_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="0" width="272" height="20" uuid="721a62c9-1b1d-4e4c-9271-287b55f828d2"/>
+				<textFieldExpression><![CDATA[$F{error_descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

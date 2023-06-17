@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ejercicio" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7ad05e69-5013-409c-9e04-d7bd8bdd648e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1"/>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     ejercicio.`idejercicio` AS ejercicio_idejercicio,
+     ejercicio.`pregunta` AS ejercicio_pregunta,
+     ejercicio.`foto_ejercicio` AS ejercicio_foto_ejercicio,
+     ejercicio.`complementos_pregunta_idcomplementos_pregunta` AS ejercicio_complementos_pregunta_idcomplementos_pregunta,
+     ejercicio.`idcomplementos_respuesta` AS ejercicio_idcomplementos_respuesta,
+     ejercicio.`idtipoejercicio` AS ejercicio_idtipoejercicio,
+     ejercicio.`idtema` AS ejercicio_idtema,
+     complementos_pregunta.`idcomplementos_pregunta` AS complementos_pregunta_idcomplementos_pregunta,
+     complementos_pregunta.`inc_A` AS complementos_pregunta_inc_A,
+     complementos_pregunta.`inc_B` AS complementos_pregunta_inc_B,
+     complementos_pregunta.`inc_C` AS complementos_pregunta_inc_C,
+     complementos_pregunta.`inc_D` AS complementos_pregunta_inc_D,
+     complementos_pregunta.`inc_E` AS complementos_pregunta_inc_E
+FROM
+     `complementos_pregunta` complementos_pregunta INNER JOIN `ejercicio` ejercicio ON complementos_pregunta.`idcomplementos_pregunta` = ejercicio.`complementos_pregunta_idcomplementos_pregunta`
+WHERE ejercicio.`idejercicio` = $P{id}]]>
+	</queryString>
+	<field name="ejercicio_idejercicio" class="java.lang.Integer"/>
+	<field name="ejercicio_pregunta" class="java.lang.String"/>
+	<field name="ejercicio_foto_ejercicio" class="java.io.InputStream"/>
+	<field name="ejercicio_complementos_pregunta_idcomplementos_pregunta" class="java.lang.Integer"/>
+	<field name="ejercicio_idcomplementos_respuesta" class="java.lang.Integer"/>
+	<field name="ejercicio_idtipoejercicio" class="java.lang.Integer"/>
+	<field name="ejercicio_idtema" class="java.lang.Integer"/>
+	<field name="complementos_pregunta_idcomplementos_pregunta" class="java.lang.Integer"/>
+	<field name="complementos_pregunta_inc_A" class="java.lang.String"/>
+	<field name="complementos_pregunta_inc_B" class="java.lang.String"/>
+	<field name="complementos_pregunta_inc_C" class="java.lang.String"/>
+	<field name="complementos_pregunta_inc_D" class="java.lang.String"/>
+	<field name="complementos_pregunta_inc_E" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="135" y="10" width="146" height="30" uuid="5714a5d0-3076-4876-a73a-51a41eee1260"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ejercicio numero]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="295" y="10" width="100" height="30" uuid="07a33a82-0b0b-4667-a464-84952fc4bb02"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="361" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="77" width="227" height="275" uuid="1bcbf2f2-f2af-4d24-a1f7-3a7e80ea9320"/>
+				<imageExpression><![CDATA[$F{ejercicio_foto_ejercicio}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="245" y="97" width="317" height="20" uuid="a7776e19-833b-40cb-b5a3-a16ace1ebe5f"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_A}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="139" width="317" height="20" uuid="49a568a8-9091-48d4-b876-3b4438ed91f3"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_B}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="177" width="317" height="20" uuid="d657a92d-6ad6-4a23-b251-2d05e24d45b1"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_C}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="211" width="317" height="20" uuid="b5eb5206-d94c-4e67-a684-2412eda02c39"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_D}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="247" width="317" height="20" uuid="98ad306c-2bd7-4c06-936e-b16e5e10a989"/>
+				<textFieldExpression><![CDATA[$F{complementos_pregunta_inc_E}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="530" height="77" uuid="5bf4d503-7717-48b7-acaf-9edc740227b1"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ejercicio_pregunta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="d8009e35-a4a7-4427-bbb8-846cc3e1f0b9"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="89" height="20" uuid="52cf8403-91ac-4a8e-bdf1-03113f715d63"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pág "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="522" y="0" width="40" height="20" uuid="30c7d2c6-cd67-43cc-9f5e-11bfd72383d5"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

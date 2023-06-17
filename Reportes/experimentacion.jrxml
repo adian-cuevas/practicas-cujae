@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="experimentacion" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cd969699-d7cd-4e00-9bb5-730ad4e23e08">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     experimentacion.`id_experimentacion` AS experimentacion_id_experimentacion,
+     experimentacion.`descripcion` AS experimentacion_descripcion,
+     experimentacion.`puestotrabaj` AS experimentacion_puestotrabaj,
+     experimentacion.`nombre` AS experimentacion_nombre
+FROM
+     `experimentacion` experimentacion]]>
+	</queryString>
+	<field name="experimentacion_id_experimentacion" class="java.lang.Integer"/>
+	<field name="experimentacion_descripcion" class="java.lang.String"/>
+	<field name="experimentacion_puestotrabaj" class="java.io.InputStream"/>
+	<field name="experimentacion_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement x="81" y="17" width="418" height="32" uuid="70abb390-b3bd-4514-9cdb-49d6c8811714"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Casos de Estudio]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="302" y="0" width="143" height="20" uuid="a0014a1b-197b-4047-89b0-4359f2ebc3bd"/>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="114" y="0" width="143" height="20" uuid="13276074-7471-46d7-855b-b7e96b88fbcb"/>
+				<text><![CDATA[Puesto de trabajo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="96" height="20" uuid="6b011042-f546-44a3-86a2-c2f3f2cbf1e3"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="157" splitType="Stretch">
+			<textField>
+				<reportElement x="302" y="0" width="270" height="157" uuid="ae7e696a-84ac-48f7-b1a5-aa025cd3983e"/>
+				<textFieldExpression><![CDATA[$F{experimentacion_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="12" width="96" height="58" uuid="b106f957-a66d-4ff4-8d76-b8ff6cf4bec5"/>
+				<textFieldExpression><![CDATA[$F{experimentacion_nombre}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="114" y="0" width="143" height="125" uuid="4434f113-7c1d-4d02-856d-0c09092f9ea3"/>
+				<imageExpression><![CDATA[$F{experimentacion_puestotrabaj}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="2e43c42d-76f8-442e-9e4f-8a521f2b71ea"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="7" width="80" height="20" uuid="02ae7709-6f15-4e98-ac05-9432ee10a39b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pag "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="507" y="7" width="40" height="20" uuid="b20d67f1-0fd1-4f12-b8b3-a75b20e1eb8a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
