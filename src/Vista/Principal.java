@@ -290,18 +290,15 @@ public class Principal extends javax.swing.JFrame {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int i = JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?");
-                if (i == 0) {
-                    if (Control.fichero.exists()) {
-                        if (Control.fichero.delete()) {
-                            System.err.println("se borro");
-                            System.exit(0);//cierra aplicacion
-                        } else {
-                            System.err.println("no se borro. hubo un error");
-                        }
+                if (Control.fichero.exists()) {
+                    if (Control.fichero.delete()) {
+                        System.err.println("se borro");
+                        System.exit(0);//cierra aplicacion
                     } else {
-                        System.exit(0);
+                        System.err.println("no se borro. hubo un error");
                     }
+                } else {
+                    System.exit(0);
                 }
             }
         });
@@ -334,6 +331,8 @@ public class Principal extends javax.swing.JFrame {
         lblsillaburo = new javax.swing.JLabel();
         lblpuestotrabajo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         panelrespuestaexperimentacion = new javax.swing.JPanel();
         panelprincipal = new javax.swing.JPanel();
         spprincipal = new javax.swing.JScrollPane();
@@ -554,7 +553,7 @@ public class Principal extends javax.swing.JFrame {
         );
         panelmonbinstrumentoLayout.setVerticalGroup(
             panelmonbinstrumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 291, Short.MAX_VALUE)
+            .addGap(0, 310, Short.MAX_VALUE)
         );
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -649,39 +648,51 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("1. Seleccione un instrumento de medición");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabel3.setText("Medios");
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabel14.setText("Instrumentos");
+
         javax.swing.GroupLayout panelpuestosLayout = new javax.swing.GroupLayout(panelpuestos);
         panelpuestos.setLayout(panelpuestosLayout);
         panelpuestosLayout.setHorizontalGroup(
             panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbltrabajopc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblagenciaviajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblfabricacomponentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblmaquinaimpresion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblpupitre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblsillaburo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelpuestosLayout.createSequentialGroup()
                 .addGroup(panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbltrabajopc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblagenciaviajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblfabricacomponentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblmaquinaimpresion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblpupitre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblsillaburo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblpuestotrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+                    .addComponent(jLabel14))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelpuestosLayout.setVerticalGroup(
             panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelpuestosLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(1, 1, 1)
                 .addComponent(lbltrabajopc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel14)
+                .addGap(1, 1, 1)
                 .addComponent(lblagenciaviajes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblfabricacomponentes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblmaquinaimpresion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblpupitre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(4, 4, 4)
                 .addComponent(lblsillaburo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblpuestotrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -3001,6 +3012,7 @@ public class Principal extends javax.swing.JFrame {
     private void lbltrabajopcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbltrabajopcMouseClicked
         // TODO add your handling code here:
         if (lbltrabajopc.isEnabled()) {
+            System.err.println("abilitado en Trabajo PC");
             lblfce = false;
             lbloav = false;
             lblmi = false;
@@ -3012,12 +3024,14 @@ public class Principal extends javax.swing.JFrame {
             jScrollPane1.setEnabled(true);
             habilitaPanelInstrumentos(false);
         }
+        System.err.println("Di click en Trabajo PC");
 
     }//GEN-LAST:event_lbltrabajopcMouseClicked
 
     private void lblagenciaviajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblagenciaviajesMouseClicked
         // TODO add your handling code here:
         if (lblagenciaviajes.isEnabled()) {
+            System.err.println("abilitado en Agencia de viaje");
             lbloav = true;
             lblfce = false;
             lblmi = false;
@@ -3029,12 +3043,14 @@ public class Principal extends javax.swing.JFrame {
             jScrollPane1.setEnabled(true);
             habilitaPanelInstrumentos(false);
         }
+        System.err.println("Di click en Agencia de Viajes");
 
     }//GEN-LAST:event_lblagenciaviajesMouseClicked
 
     private void lblfabricacomponentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblfabricacomponentesMouseClicked
         // TODO add your handling code here:
         if (lblfabricacomponentes.isEnabled()) {
+            System.err.println("abilitado en fabrica de componente");
             lblfce = true;
             lbloav = false;
             lblmi = false;
@@ -3046,12 +3062,14 @@ public class Principal extends javax.swing.JFrame {
             jScrollPane1.setEnabled(true);
             habilitaPanelInstrumentos(false);
         }
+        System.err.println("Di click en Fabrica de Componente");
 
     }//GEN-LAST:event_lblfabricacomponentesMouseClicked
 
     private void lblmaquinaimpresionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblmaquinaimpresionMouseClicked
         // TODO add your handling code here:
         if (lblmaquinaimpresion.isEnabled()) {
+            System.err.println("abilitado en Maquina de Impresion");
             lblmi = true;
             lbloav = false;
             lblfce = false;
@@ -3063,12 +3081,14 @@ public class Principal extends javax.swing.JFrame {
             jScrollPane1.setEnabled(true);
             habilitaPanelInstrumentos(false);
         }
+        System.err.println("Di click en Maquina de Impresion");
 
     }//GEN-LAST:event_lblmaquinaimpresionMouseClicked
 
     private void lblpupitreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblpupitreMouseClicked
         // TODO add your handling code here:
         if (lblpupitre.isEnabled()) {
+            System.err.println("abilitado en Pupitre");
             lblp = true;
             lbloav = false;
             lblfce = false;
@@ -3080,12 +3100,14 @@ public class Principal extends javax.swing.JFrame {
             jScrollPane1.setEnabled(true);
             habilitaPanelInstrumentos(false);
         }
+        System.err.println("Di click en Pupitre");
 
     }//GEN-LAST:event_lblpupitreMouseClicked
 
     private void lblsillaburoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsillaburoMouseClicked
         // TODO add your handling code here:
         if (lblsillaburo.isEnabled()) {
+            System.err.println("abilitado en Silla buro");
             lblsbr = true;
             lbloav = false;
             lblfce = false;
@@ -3097,6 +3119,7 @@ public class Principal extends javax.swing.JFrame {
             jScrollPane1.setEnabled(true);
             habilitaPanelInstrumentos(false);
         }
+        System.err.println("Di click en Silla Buro");
 
     }//GEN-LAST:event_lblsillaburoMouseClicked
 
@@ -4513,7 +4536,14 @@ public class Principal extends javax.swing.JFrame {
             lbl.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lbl.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    if (autenticado && !clickpuestotrabajo && lbl.isEnabled()) {
+                    System.err.println("Dando click en el puesto de trabajo");
+                    
+                    //Actualizando tabla de muestra cada vez que se cambia de puesto de trabajo
+                    DefaultTableModel model = (DefaultTableModel) tablamuestra.getModel();
+                    model.setRowCount(0);
+                    tablamuestra.repaint();
+                    
+                    if (autenticado && lbl.isEnabled()) {
                         habilitarLabelInstrumento();
                         //no la voy a poner null porque la voy a utilizar
                         fotoprincipal = lblinstrumentos.getIcon();
@@ -4654,6 +4684,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void habilitaCasosdeEstudio(boolean valor) {
+        System.err.println("habilitando casos de estudio");
         Component[] componente = panelmonbinstrumento.getComponents();
         for (Component component : componente) {
             if (component instanceof JLabel) {
@@ -4891,10 +4922,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
