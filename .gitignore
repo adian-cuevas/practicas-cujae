@@ -1,6 +1,26 @@
-.settings
-/build
-/dist
-/nbproject
-/test
-miApp.tmp
+# Compiled class file
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+
+# IntelliJ IDEA files
+.idea/
+
+# Eclipse files
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans files
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
