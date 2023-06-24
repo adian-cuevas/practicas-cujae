@@ -11,6 +11,7 @@ import Util.Crypto;
 import Util.UserInterfaceSuport;
 import Util.Validate;
 import Util.Validate;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.net.ConnectException;
 import java.util.logging.Level;
@@ -352,6 +353,52 @@ public class AutentificacionInicialVisual extends javax.swing.JDialog {
 
     private void aceptarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarButtonActionPerformed
         // TODO add your handling code here:
+        validateAll();
+    }//GEN-LAST:event_aceptarButtonActionPerformed
+
+    private void usuarioTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioTextFieldKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        System.err.println(c);
+        if (c == KeyEvent.VK_ENTER) {
+//            passwordPasswordField.setCaretPosition(0);
+            System.out.println("Vista.AutentificacionInicialVisual.usuarioTextFieldKeyPressed()");
+            validateAll();
+        }
+    }//GEN-LAST:event_usuarioTextFieldKeyPressed
+
+    private void passwordPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordPasswordFieldKeyPressed
+        char c = evt.getKeyChar();
+        if (c == KeyEvent.VK_ENTER) {
+            validateAll();
+//            if (usuarioTextField.getText().isEmpty() || passwordPasswordField.getPassword().length == 0) {
+//                JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, "Debe insertar usuario y contrasena");
+//            } else {
+//                try {
+//                    usuarioAutentificado = usuarioJpaController.login(usuarioTextField.getText().toString(), Crypto.getEncryptedSHAString(String.valueOf(passwordPasswordField.getPassword())));
+//                    if (usuarioAutentificado == null) {
+//                        JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, "usuario o contrasena incorrectos");
+//                    } else {
+//                        if (contraseñaCheckBox1.isSelected()) {
+//                            autenjPanel4.setVisible(true);
+//                            cambiarPanel2.setVisible(false);
+//                        } else {
+//                            dispose();
+//                        }
+//                    }
+//
+//                } catch (NullPointerException ex) {
+//                    JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, ex.getMessage(), "Usuario o contraseña inválidos", 2);
+//                } catch (Exception ex) {
+//                    Logger.getLogger(AutentificacionInicialVisual.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+        }
+
+    }//GEN-LAST:event_passwordPasswordFieldKeyPressed
+
+    //Valida que todas los campos de usuario y contraseña esten correctos
+    private void validateAll() {
         if (usuarioTextField.getText().isEmpty() || passwordPasswordField.getPassword().length == 0) {
             JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, "Debe insertar usuario y contraseña");
         } else {
@@ -363,7 +410,7 @@ public class AutentificacionInicialVisual extends javax.swing.JDialog {
                     usuarioAutentificado = usuarioJpaController.login(usuarioTextField.getText(), Crypto.getEncryptedSHAString(String.valueOf(passwordPasswordField.getPassword())));
 
                     if (usuarioAutentificado == null) {
-                        
+
                     } else {
                         if (contraseñaCheckBox1.isSelected()) {
                             autenjPanel4.setVisible(true);
@@ -379,26 +426,25 @@ public class AutentificacionInicialVisual extends javax.swing.JDialog {
 
                 } catch (NoResultException ex) {
                     if (usuarioJpaController.findByName(usuarioTextField.getText()) != null) {
-                            JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, "Ya existe un usuario con este nombre");
+                        JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, "Ya existe un usuario con este nombre");
+                    } else {
+                        int opcion = JOptionPane.showConfirmDialog(AutentificacionInicialVisual.this, "El usuario no se encuentra registrado. Desea registrarse");
+                        if (opcion == 0) {
+                            usuarioAutentificado = new Usuario();
+                            usuarioAutentificado.setNombUsuario(usuarioTextField.getText());
+
+                            System.out.println(passwordPasswordField.getPassword());
+
+                            RegistroEstudiante registroEstudiante = new RegistroEstudiante(null, true, usuarioAutentificado);
+                            registroEstudiante.setVisible(true);
+
+                            dispose();
                         }
-                    else{
-                    int opcion = JOptionPane.showConfirmDialog(AutentificacionInicialVisual.this, "El usuario no se encuentra registrado. Desea registrarse");
-                    if (opcion == 0) {
-                        usuarioAutentificado = new Usuario();
-                        usuarioAutentificado.setNombUsuario(usuarioTextField.getText());
 
-                        System.out.println(passwordPasswordField.getPassword());
-
-                        RegistroEstudiante registroEstudiante = new RegistroEstudiante(null, true, usuarioAutentificado);
-                        registroEstudiante.setVisible(true);
-
-                        dispose();
-                    }
-
-                    if (opcion == 1) {
-                        passwordPasswordField.setText("");
-                        usuarioTextField.setText("");
-                    }
+                        if (opcion == 1) {
+                            passwordPasswordField.setText("");
+                            usuarioTextField.setText("");
+                        }
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, "Usuario o contrasena invalido", "Usuario o contraseña inválidos", 2);
@@ -406,44 +452,7 @@ public class AutentificacionInicialVisual extends javax.swing.JDialog {
 
             }
         }
-    }//GEN-LAST:event_aceptarButtonActionPerformed
-
-    private void usuarioTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioTextFieldKeyPressed
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if (c == KeyEvent.VK_ENTER) {
-            passwordPasswordField.setCaretPosition(0);
-        }
-    }//GEN-LAST:event_usuarioTextFieldKeyPressed
-
-    private void passwordPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordPasswordFieldKeyPressed
-        char c = evt.getKeyChar();
-        if (c == KeyEvent.VK_ENTER) {
-            if (usuarioTextField.getText().isEmpty() || passwordPasswordField.getPassword().length == 0) {
-                JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, "Debe insertar usuario y contrasena");
-            } else {
-                try {
-                    usuarioAutentificado = usuarioJpaController.login(usuarioTextField.getText().toString(), Crypto.getEncryptedSHAString(String.valueOf(passwordPasswordField.getPassword())));
-                    if (usuarioAutentificado == null) {
-                        JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, "usuario o contrasena incorrectos");
-                    } else {
-                        if (contraseñaCheckBox1.isSelected()) {
-                            autenjPanel4.setVisible(true);
-                            cambiarPanel2.setVisible(false);
-                        } else {
-                            dispose();
-                        }
-                    }
-
-                } catch (NullPointerException ex) {
-                    JOptionPane.showMessageDialog(AutentificacionInicialVisual.this, ex.getMessage(), "Usuario o contraseña inválidos", 2);
-                } catch (Exception ex) {
-                    Logger.getLogger(AutentificacionInicialVisual.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-
-    }//GEN-LAST:event_passwordPasswordFieldKeyPressed
+    }
 
     /**
      * @param args the command line arguments

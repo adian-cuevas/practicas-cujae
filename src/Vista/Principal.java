@@ -38,6 +38,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -4507,10 +4509,10 @@ public class Principal extends javax.swing.JFrame {
 
     private void actualizaTabla() {
         int sujetos = (int) jcbmuestra.getSelectedItem();
-        listaarray.add("Medida");
+        listaarray.add("Dimensión Antropométrica");
         for (int i = 0; i < sujetos; i++) {
             int aux2 = i + 1;
-            listaarray.add("Sujeto " + aux2);
+            listaarray.add("Medida de Sujeto " + aux2);
             //modelotabla.addColumn(new Object[]{"Sujeto "+i+1});
         }
         //CUANDO DOY 2 VECES ME ESCOGE PONE TODOS Y NO ME LIMPIA LA TABLA
@@ -4537,12 +4539,12 @@ public class Principal extends javax.swing.JFrame {
             lbl.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     System.err.println("Dando click en el puesto de trabajo");
-                    
+
                     //Actualizando tabla de muestra cada vez que se cambia de puesto de trabajo
                     DefaultTableModel model = (DefaultTableModel) tablamuestra.getModel();
                     model.setRowCount(0);
                     tablamuestra.repaint();
-                    
+
                     if (autenticado && lbl.isEnabled()) {
                         habilitarLabelInstrumento();
                         //no la voy a poner null porque la voy a utilizar
