@@ -178,11 +178,11 @@ public class Principal extends javax.swing.JFrame {
     private String potencia = "^2";
     private String cateto = "cat ady * tan30";
     private String division = "÷";
-    private String holgura = "holgura";
+    private String holgura = "holgura de calzado";
     private String duplo = "2";
     private String raiz = "rz";
     private String aparentisis = "(";
-    private double holgc = 0.25;
+    private double holgc = 2;
     private double espc = 0.2;
     private String cparenticis = ")";
     private String multiplicacion;
@@ -1750,14 +1750,14 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         panelimagen.getAccessibleContext().setAccessibleName("");
@@ -2040,17 +2040,17 @@ public class Principal extends javax.swing.JFrame {
                 btnduploActionPerformed(evt);
             }
         });
-        panelopr2.add(btnduplo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 50, 40));
+        panelopr2.add(btnduplo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 50, 20));
 
         btnholgura.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        btnholgura.setText("Holgura");
+        btnholgura.setText("Holgura de calzado");
         btnholgura.setToolTipText("Holgura");
         btnholgura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnholguraActionPerformed(evt);
             }
         });
-        panelopr2.add(btnholgura, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 80, 40));
+        panelopr2.add(btnholgura, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 140, 20));
 
         btnpotencia.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnpotencia.setText("x^2");
@@ -2061,7 +2061,7 @@ public class Principal extends javax.swing.JFrame {
                 btnpotenciaActionPerformed(evt);
             }
         });
-        panelopr2.add(btnpotencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 60, 40));
+        panelopr2.add(btnpotencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 60, 20));
 
         cbtangente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "tan", "20", "30", "45", "60", " " }));
         cbtangente.addActionListener(new java.awt.event.ActionListener() {
@@ -2069,7 +2069,7 @@ public class Principal extends javax.swing.JFrame {
                 cbtangenteActionPerformed(evt);
             }
         });
-        panelopr2.add(cbtangente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 40));
+        panelopr2.add(cbtangente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 60, 20));
 
         cbpercentil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Percentil", "P(5)", "P(95)" }));
         cbpercentil.addActionListener(new java.awt.event.ActionListener() {
@@ -2077,7 +2077,7 @@ public class Principal extends javax.swing.JFrame {
                 cbpercentilActionPerformed(evt);
             }
         });
-        panelopr2.add(cbpercentil, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 80, 40));
+        panelopr2.add(cbpercentil, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 80, 20));
 
         javax.swing.GroupLayout paneloperadoresLayout = new javax.swing.GroupLayout(paneloperadores);
         paneloperadores.setLayout(paneloperadoresLayout);
@@ -2086,7 +2086,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(paneloperadoresLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneloperadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelopr2, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                    .addComponent(panelopr2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelopr1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         paneloperadoresLayout.setVerticalGroup(
@@ -2096,7 +2096,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(panelopr1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelopr2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         paneldiseno.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(0, 0, 0)), "Resultado"), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED)));
@@ -2199,7 +2199,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(panelcalculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelcalculoLayout.createSequentialGroup()
                         .addComponent(paneloperadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
+                        .addGap(34, 34, 34)
                         .addGroup(panelcalculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btncalculo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnreiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2210,7 +2210,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelcalculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnfincalculo, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(btnfincalculo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                     .addComponent(btnatrascalculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2889,6 +2889,7 @@ public class Principal extends javax.swing.JFrame {
             panelexperimentacion.setVisible(false);
             panelpuestos.setVisible(false);
             panelinstrumento.setVisible(true);
+            
 
             //aqui comienza el codigo uerte de este panel
             llenarComboBoxDimensionesDiseno();
@@ -2897,6 +2898,8 @@ public class Principal extends javax.swing.JFrame {
             //llenarComboBoxPosiciones();
             btncalculo.setEnabled(false);
             btnreiniciar.setEnabled(false);
+            cleanPanelCalculo();  
+            
         }
     }//GEN-LAST:event_btnpasarAcalculardisenoActionPerformed
 
@@ -3235,21 +3238,27 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnautenticarActionPerformed
 
     private boolean comprueba() {
-        boolean result = false;
+        boolean result=false;
         List<DimensionesRelevantes> lista = modeloexp.getDimensionesRelevantesList();
         for (DimensionesRelevantes lista1 : lista) {
             //System.out.println("Las dimensiones son:  " + (String)cbdimrelv.getSelectedItem() +"  esta es la bd     " +lista1.getNombDimension()+"\n");
-            if (lista1.getNombDimension().equals((String) cbdimrelv.getSelectedItem())) {
-                System.out.println("***La dimension relevante esta en el modelo***");
+            if (lista1.getNombDimension().equals((String)cbdimrelv.getSelectedItem())) {
+                //JOptionPane.showMessageDialog(null, "***La dimension relevante esta en el modelo***");
                 //int pos = lista.indexOf(cbdimrelv.getSelectedItem());
                 DimensionesRelevantes dr = lista1;//lista.get(pos);
-                String auxexp = controlformula.MostrarFR(dr.getIddimensionesRelevantes()).getFormulacion();
-                ArrayList<String> auxlist = guardaPartes(expresionlogica);
-                result = igualExpresion(auxlist, auxexp);
-                JOptionPane.showMessageDialog(null, "Esta es la formula de la base de datos" + result);
-            }
+                String auxexp=controlformula.MostrarFR(dr.getIddimensionesRelevantes()).getFormulacion();
+                ArrayList<String> auxlist= guardaPartes(expresionlogica);
+                result=igualExpresion(auxlist,auxexp);
+            } 
         }
-        return result;
+        
+        if(result){
+            JOptionPane.showMessageDialog(null, "Formula conformada correctamente");
+        }else{
+            JOptionPane.showMessageDialog(null, "Formula INCORRECTA");
+        }
+        
+        return  result;
     }
 
     public ArrayList<String> guardaPartes(String valor) {
@@ -3297,7 +3306,7 @@ public class Principal extends javax.swing.JFrame {
         int action = JOptionPane.showOptionDialog(null, "Desea registrar el calculo realizado", "Información",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
         if (action == JOptionPane.YES_OPTION) {
-            listamodelcalculo.addElement(cbdimrelv.getSelectedItem() + ": " + expresionlogica);
+            listamodelcalculo.addElement(cbdimrelv.getSelectedItem() + " = " + expresionlogica);
             jList1.setModel(listamodelcalculo);
         }
         cleanPanelCalculo();
@@ -3400,7 +3409,7 @@ public class Principal extends javax.swing.JFrame {
 
         }
 
-        int action1 = JOptionPane.showOptionDialog(Principal.this, "Desea condultar a través de un reporte la respuesta correcta de caso de estudio en cuestièn ", "Información",
+        int action1 = JOptionPane.showOptionDialog(Principal.this, "Desea consultar a través de un reporte la respuesta correcta de caso de estudio en cuestión ", "Información",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
         if (action1 == JOptionPane.YES_OPTION) {
             ReportesController d = new ReportesController();
@@ -3415,10 +3424,14 @@ public class Principal extends javax.swing.JFrame {
         btnsalir.setVisible(true);
         panelinstrumento.setVisible(true);
         lblinstrumentos.setIcon(fotoprincipal);
-        panelposturas.setVisible(false);
+        panelposturas.setVisible(true);
         habilitarLabelInstrumento();
         InicializaAllComponentes();
-        clickpuestotrabajo = true;
+        clickpuestotrabajo = false;
+        cleanPanelCalculo();
+        
+        panelpuestos.setVisible(false);
+        modeloexp = null;
     }//GEN-LAST:event_btnfincalculoActionPerformed
 
     private void tablamuestraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablamuestraMouseClicked
@@ -3695,10 +3708,10 @@ public class Principal extends javax.swing.JFrame {
                 System.out.println("----Yo soy :" + expresionnumerica + "\n");
                 break;
             }
-            case "holgura": {
+            case "holgura de calzado": {
                 valoraux = holgc;
                 asignaOperadores(valoraux);
-                expresionnumerica = expresionauxiliar + String.valueOf(valoraux);
+                expresionnumerica = expresionauxiliar + String.valueOf(valoraux)+"cm";
                 break;
             }
             case "^2": {

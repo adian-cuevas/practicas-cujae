@@ -2198,7 +2198,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="panelimagen" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <EmptySpace pref="15" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2207,7 +2207,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="panelimagen" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2589,7 +2589,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="paneloperadores" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btncalculo" min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="btnreiniciar" min="-2" pref="40" max="-2" attributes="0"/>
@@ -2603,7 +2603,7 @@
                       <Component id="jPanel3" min="-2" pref="90" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnfincalculo" pref="30" max="32767" attributes="0"/>
+                          <Component id="btnfincalculo" pref="34" max="32767" attributes="0"/>
                           <Component id="btnatrascalculo" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -2705,7 +2705,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="panelopr2" pref="442" max="32767" attributes="0"/>
+                              <Component id="panelopr2" max="32767" attributes="0"/>
                               <Component id="panelopr1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -2718,7 +2718,7 @@
                           <Component id="panelopr1" min="-2" pref="55" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="panelopr2" min="-2" pref="55" max="-2" attributes="0"/>
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2845,7 +2845,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="20" y="0" width="50" height="40"/>
+                          <AbsoluteConstraints x="20" y="0" width="50" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -2854,7 +2854,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="13" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Holgura"/>
+                        <Property name="text" type="java.lang.String" value="Holgura de calzado"/>
                         <Property name="toolTipText" type="java.lang.String" value="Holgura"/>
                       </Properties>
                       <Events>
@@ -2862,7 +2862,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="350" y="0" width="80" height="40"/>
+                          <AbsoluteConstraints x="310" y="0" width="140" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -2882,7 +2882,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="90" y="0" width="60" height="40"/>
+                          <AbsoluteConstraints x="80" y="0" width="60" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -2904,7 +2904,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="170" y="0" width="50" height="40"/>
+                          <AbsoluteConstraints x="150" y="0" width="60" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -2923,7 +2923,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="240" y="0" width="80" height="40"/>
+                          <AbsoluteConstraints x="220" y="0" width="80" height="20"/>
                         </Constraint>
                       </Constraints>
                     </Component>
