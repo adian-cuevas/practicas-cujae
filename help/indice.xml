@@ -6,4 +6,5 @@
         <indexitem text="Ejemplo JavaHelp"    target="aplicacion"/>
         <indexitem text="Ventana principal"    target="ventana_principal"/>
         <indexitem text="Ventana secundaria"    target="ventana_secundaria"/>
+        <indexitem text="Otro ejemplo de Indice"    target="ejemplo"/>
 </index>

@@ -5,4 +5,7 @@ topicimage="ItemIco"-->
            <tocitem text="Ventana principal"    target="ventana_principal"/>
            <tocitem text="Ventana secundaria"    target="ventana_secundaria"/>
         </tocitem>
+        <tocitem text="Otra Carpeta" target="">
+            <tocitem text="Ejemplo adfa"    target="ejemplo"/>
+        </tocitem>
 </toc>

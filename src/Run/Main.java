@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package prueba5;
+package Run;
 
 import Util.Control;
 import Util.SingletonPatron;
@@ -13,7 +13,7 @@ import Util.SingletonPatron;
  *
  * @author Eduardo
  */
-public class Prueba5 {
+public class Main {
 
     /**
      * @param args the command line arguments

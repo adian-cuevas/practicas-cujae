@@ -359,10 +359,8 @@ public class AutentificacionInicialVisual extends javax.swing.JDialog {
     private void usuarioTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioTextFieldKeyPressed
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        System.err.println(c);
         if (c == KeyEvent.VK_ENTER) {
 //            passwordPasswordField.setCaretPosition(0);
-            System.out.println("Vista.AutentificacionInicialVisual.usuarioTextFieldKeyPressed()");
             validateAll();
         }
     }//GEN-LAST:event_usuarioTextFieldKeyPressed

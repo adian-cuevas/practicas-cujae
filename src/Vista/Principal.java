@@ -38,6 +38,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -61,7 +62,10 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 import sun.awt.image.ByteArrayImageSource;
 import sun.awt.image.ToolkitImage;
@@ -77,6 +81,7 @@ public class Principal extends javax.swing.JFrame {
      */
     //***********************************************************estudiante1 inicia
     public static int muestra = 0;
+    static boolean lblbat = false;
     static boolean lbloav = false;
     static boolean lblfce = false;
     static boolean lblmi = false;
@@ -332,9 +337,9 @@ public class Principal extends javax.swing.JFrame {
         lblpupitre = new javax.swing.JLabel();
         lblsillaburo = new javax.swing.JLabel();
         lblpuestotrabajo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        lblbaton = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         panelrespuestaexperimentacion = new javax.swing.JPanel();
         panelprincipal = new javax.swing.JPanel();
         spprincipal = new javax.swing.JScrollPane();
@@ -555,7 +560,7 @@ public class Principal extends javax.swing.JFrame {
         );
         panelmonbinstrumentoLayout.setVerticalGroup(
             panelmonbinstrumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+            .addGap(0, 351, Short.MAX_VALUE)
         );
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -596,7 +601,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblagenciaviajes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblagenciaviajes.setText("Tallímetro o estadímetro");
+        lblagenciaviajes.setText("Tallímetro o estadiómetro");
         lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblagenciaviajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblagenciaviajes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -647,61 +652,68 @@ public class Principal extends javax.swing.JFrame {
 
         lblpuestotrabajo.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("1. Seleccione un instrumento de medición");
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel18.setText("1. Seleccione un medio");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jLabel3.setText("Medios");
+        lblbaton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblbaton.setText("Batón");
+        lblbaton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblbaton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblbaton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblbatonMouseClicked(evt);
+            }
+        });
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jLabel14.setText("Instrumentos");
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel19.setText("2. Seleccione un instrumento");
 
         javax.swing.GroupLayout panelpuestosLayout = new javax.swing.GroupLayout(panelpuestos);
         panelpuestos.setLayout(panelpuestosLayout);
         panelpuestosLayout.setHorizontalGroup(
             panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lbltrabajopc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblbaton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelpuestosLayout.createSequentialGroup()
+                .addGroup(panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblpuestotrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblsillaburo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(lblagenciaviajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblfabricacomponentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblmaquinaimpresion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblpupitre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblsillaburo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelpuestosLayout.createSequentialGroup()
-                .addGroup(panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblpuestotrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelpuestosLayout.setVerticalGroup(
             panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelpuestosLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(1, 1, 1)
                 .addComponent(lbltrabajopc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel14)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblbaton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblagenciaviajes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblfabricacomponentes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblmaquinaimpresion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblpupitre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(lblsillaburo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblpuestotrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblsillaburo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblpuestotrabajo, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         panelpuestotrabajo.add(panelpuestos, "card3");
 
-        getContentPane().add(panelpuestotrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 91, -1, -1));
+        getContentPane().add(panelpuestotrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 91, 290, -1));
 
         panelrespuestaexperimentacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         panelrespuestaexperimentacion.setLayout(new java.awt.CardLayout());
@@ -794,6 +806,11 @@ public class Principal extends javax.swing.JFrame {
 
         jcbmuestra.setToolTipText("seleccione tamaño de muestra");
         jcbmuestra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jcbmuestra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jcbmuestraMousePressed(evt);
+            }
+        });
         jcbmuestra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbmuestraActionPerformed(evt);
@@ -1746,7 +1763,7 @@ public class Principal extends javax.swing.JFrame {
         panelimagen.getAccessibleContext().setAccessibleName("");
 
         jLabel44.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel44.setText("       4.  Marque los puntos antropométricos asociados ");
+        jLabel44.setText("       5.  Marque los puntos antropométricos asociados ");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("                   a la dimensión seleccionada ");
@@ -1801,7 +1818,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel17.setText("    3.  Seleccione una  postura");
+        jLabel17.setText("    4.  Seleccione una  postura");
 
         tabladimension.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1858,7 +1875,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel16.setText("             2.  Seleccione una dimensión humana");
+        jLabel16.setText("             3.  Seleccione una dimensión humana");
 
         btnpasarAcalculardiseno.setText("Diseñar");
         btnpasarAcalculardiseno.addActionListener(new java.awt.event.ActionListener() {
@@ -3015,6 +3032,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lbltrabajopc.isEnabled()) {
             System.err.println("abilitado en Trabajo PC");
+            lblbat = false;
             lblfce = false;
             lbloav = false;
             lblmi = false;
@@ -3034,6 +3052,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblagenciaviajes.isEnabled()) {
             System.err.println("abilitado en Agencia de viaje");
+            lblbat = false;
             lbloav = true;
             lblfce = false;
             lblmi = false;
@@ -3053,6 +3072,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblfabricacomponentes.isEnabled()) {
             System.err.println("abilitado en fabrica de componente");
+            lblbat = false;
             lblfce = true;
             lbloav = false;
             lblmi = false;
@@ -3072,6 +3092,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblmaquinaimpresion.isEnabled()) {
             System.err.println("abilitado en Maquina de Impresion");
+            lblbat = false;
             lblmi = true;
             lbloav = false;
             lblfce = false;
@@ -3091,6 +3112,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblpupitre.isEnabled()) {
             System.err.println("abilitado en Pupitre");
+            lblbat = false;
             lblp = true;
             lbloav = false;
             lblfce = false;
@@ -3110,6 +3132,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblsillaburo.isEnabled()) {
             System.err.println("abilitado en Silla buro");
+            lblbat = false;
             lblsbr = true;
             lbloav = false;
             lblfce = false;
@@ -3127,18 +3150,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void jcbmuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbmuestraActionPerformed
         // TODO add your handling code here:
-        try {
-            if (!jcbmuestra.getSelectedItem().equals("Seleccione")) {
-                muestra = (int) jcbmuestra.getSelectedItem();
-                System.out.println(muestra + " Son los sujetos");
-                modeltablamuestra = (DefaultTableModel) tablamuestra.getModel();
-                modeltablamuestra.setNumRows(0);
-                llenarTablaMuestra();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Por favor debe seleccionar un tamaño de muestra");
+        //quite el try and catch pues la excepcion que estaba ocurriendo ya se corrigio
+        if (!jcbmuestra.getSelectedItem().equals("Seleccione")) {
+            muestra = (int) jcbmuestra.getSelectedItem();
+            modeltablamuestra = (DefaultTableModel) tablamuestra.getModel();
+            modeltablamuestra.setNumRows(0);
+            llenarTablaMuestra();
+        } else {
+            ((DefaultTableModel) tablamuestra.getModel()).setNumRows(0);
         }
-
     }//GEN-LAST:event_jcbmuestraActionPerformed
 
     private void panelimagenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelimagenMouseEntered
@@ -3618,6 +3638,15 @@ public class Principal extends javax.swing.JFrame {
         clickpuestotrabajo = true;
     }//GEN-LAST:event_jMenu1ActionPerformed
 
+    private void jcbmuestraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbmuestraMousePressed
+        // TODO add your handling code here:
+        System.out.println("di click en combo");
+    }//GEN-LAST:event_jcbmuestraMousePressed
+
+    private void lblbatonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbatonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblbatonMouseClicked
+
     //*******************************************FUNCIONES AGREGADAS DE LAS OTRAS CLASES
     private void creaExpresion(String valor) {
         String expresionauxiliar = expresionlogica;
@@ -3903,6 +3932,11 @@ public class Principal extends javax.swing.JFrame {
 
     //******************************************
     private void llenarSujetosComboBox() {
+        ActionListener[] actionListeners = jcbmuestra.getActionListeners();
+        //quitando los Action listners para que no se activen automaticamente
+        for (ActionListener actionListener : actionListeners) {
+            jcbmuestra.removeActionListener(actionListener);
+        }
         modelmuestra = (DefaultComboBoxModel) jcbmuestra.getModel();
         modelmuestra.removeAllElements();
         List<Sujeto> list = controlsujeto.findSujetoEntities();
@@ -3911,6 +3945,10 @@ public class Principal extends javax.swing.JFrame {
             modelmuestra.addElement(i + 1);
         }
         jcbmuestra.setModel(modelmuestra);
+        //agregando los listeners luego del cambio
+        for (ActionListener actionListener : actionListeners) {
+            jcbmuestra.addActionListener(actionListener);
+        }
     }
 
     private boolean validaVentanaCasoEstudio() {
@@ -4497,9 +4535,14 @@ public class Principal extends javax.swing.JFrame {
             modeltabla.setColumnCount(0);
             modeltabla.setRowCount(0);
             tabladimension.repaint();
+
             actualizaTabla();
+            ajustarTabla(tabladimension);
+            tabladimension.repaint();
         } else {
             actualizaTabla();
+            ajustarTabla(tabladimension);
+            tabladimension.repaint();
         }
 
         jScrollPane1.setViewportView(tabladimension);
@@ -4522,6 +4565,36 @@ public class Principal extends javax.swing.JFrame {
         System.out.println("mide " + modeltabla.getRowCount());
     }
 
+    //La tabla se autoajusta de acuerdo con su contenido
+    private void ajustarTabla(JTable table) {
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            System.out.println("Columna " + i);
+            TableColumn column = table.getColumnModel().getColumn(i);
+//        System.err.println("Cantidad de filas " + tabladimension.getRowCount());
+//        System.out.println("Cantidad de Columnas " + tabladimension.getColumnCount());
+//        System.err.println("Ancho Preferido " + column.getPreferredWidth());
+//        System.err.println("Ancho Maximo " + column.getMaxWidth());
+            int anchoPreferido = column.getPreferredWidth();
+//            int anchoMax = column.getMaxWidth();
+            for (int j = 0; j < table.getRowCount(); j++) {
+                TableCellRenderer celda = table.getCellRenderer(j, i);
+                Component componente = table.prepareRenderer(celda, j, i);
+                int ancho = componente.getPreferredSize().width + table.getIntercellSpacing().width;
+                anchoPreferido = Math.max(anchoPreferido, ancho);
+//                int ancho = componente.getPreferredSize().width;
+//                anchoPreferido = ancho + 10;
+                System.out.println("Celda " + i + j + " ");
+                System.out.print("Ancho de celda " + ancho);
+//            if (anchoPreferido >= anchoMax) {
+//                anchoPreferido = anchoMax;
+//                break;
+//            }
+            }
+            System.out.println("aaaaaaaaa " + anchoPreferido);
+            column.setPreferredWidth(anchoPreferido + 50);
+        }
+    }
+
     private void cambioAInstrumento() {
         List<Instrumento> listinstrumento = controlinstrumento.findInstrumentoEntities();
     }
@@ -4537,6 +4610,7 @@ public class Principal extends javax.swing.JFrame {
             lbl.setFont(new java.awt.Font("Tahoma", 1, 12));
             lbl.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lbl.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     System.err.println("Dando click en el puesto de trabajo");
 
@@ -4553,7 +4627,6 @@ public class Principal extends javax.swing.JFrame {
                         fotoauxiliar = fotoauxiliar.getScaledInstance(lblinstrumentos.getWidth(), lblinstrumentos.getHeight(), Image.SCALE_DEFAULT);
                         lblinstrumentos.setIcon(new ImageIcon(fotoauxiliar));
                         fotoauxiliar = null;
-                        llenarSujetosComboBox();
                         lbl.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
                         modeloexp = controlexperimentacion.Mostrar(lbl.getText());//este es el objeto que toma la experimentacion seleccionada
                         txtAEnunciado.setOpaque(false);
@@ -4569,6 +4642,7 @@ public class Principal extends javax.swing.JFrame {
                         //}
                         txtAEnunciado.setText("");
                         txtAEnunciado.setText(modeloexp.getDescripcion());
+                        llenarSujetosComboBox();
                     }
                 }
             });
@@ -4798,6 +4872,7 @@ public class Principal extends javax.swing.JFrame {
         int sumaer = auxerrorCE.getCantidad();
         List<Posicionespuestotrabajo> lista = modeloexp.getPosicionespuestotrabajoList();
         for (Posicionespuestotrabajo posicionespuestotrabajo : lista) {
+            System.out.println(posicionespuestotrabajo.getDescripcion());
             if (!ppt.contains(posicionespuestotrabajo.getDescripcion())) {
                 counterror++;
                 sumaer += counterror;
@@ -4919,17 +4994,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JCheckBox jChBdr7;
     private javax.swing.JCheckBox jChBdr8;
     private javax.swing.JCheckBox jChBdr9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -4982,6 +5056,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblanchodecaderasentado;
     private javax.swing.JLabel lblanchodecodoacodo;
     private javax.swing.JLabel lblanchodelpie;
+    private javax.swing.JLabel lblbaton;
     private javax.swing.JLabel lbldiametrobiacromial;
     private javax.swing.JLabel lbldim1;
     private javax.swing.JLabel lbldr1;
