@@ -88,6 +88,7 @@ public class ResolverEjercicio extends javax.swing.JDialog {
     private UsuarioHasEjercicio modelousuario;
     private int nota=0;
     private boolean guardado=false;
+    public boolean ejerActual = false;
     
     public ResolverEjercicio(JFrame parent, boolean modal) {
         super(parent, modal);
@@ -106,7 +107,7 @@ public class ResolverEjercicio extends javax.swing.JDialog {
         controlrespuestas=new RepuestasJpaController(javax.persistence.Persistence.createEntityManagerFactory("Prueba5PU"));
         
         UserInterfaceSuport.centerComponent(this);
-        ejerc=ejercicioAleatorio(controlejercicio.getEjercicioCount()-1);
+        ejerc=0;
         cargarEjercicio(ejerc);
         inabilitaLabelSelecciona(false);
         inabilitaLabelCompletar(false);
@@ -192,11 +193,17 @@ public class ResolverEjercicio extends javax.swing.JDialog {
     }
     
     private void siguienteEjercicio(){
+        ejerActual= false;
         int aux=ejerc+1;
         List<Ejercicio> lista=controlejercicio.findEjercicioEntities();
+       
+        
         if (aux > lista.size()-1 ) {
-            aux=0;
+            JOptionPane.showMessageDialog(null, "Todos los ejercicios han sido completados");
+            this.dispose();
+            aux = 0;
         }
+        
         cargarEjercicio(aux);
         ejerc = aux;
     }
@@ -703,6 +710,7 @@ public class ResolverEjercicio extends javax.swing.JDialog {
 
     private void btncomprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncomprobarActionPerformed
         // TODO add your handling code here
+       if(!ejerActual){
         if (panelselecciona.isVisible()) {
             if (modelo.getIdtipoejercicio().getNombTipoejerc().equals("v_f")) {
                 System.out.println("V_F");
@@ -711,10 +719,11 @@ public class ResolverEjercicio extends javax.swing.JDialog {
             }
             else {
                 System.out.println("es la X");
-                if (txtinc_A.getText().isEmpty()||txtinc_A1.getText().isEmpty()||txtinc_A2.getText().isEmpty()
-                        || txtinc_A3.getText().isEmpty()||txtinc_A4.getText().isEmpty()) {
+                if (txtinc_A.getText().isEmpty()&& txtinc_A1.getText().isEmpty()&&txtinc_A2.getText().isEmpty()
+                        && txtinc_A3.getText().isEmpty()&&txtinc_A4.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null,"Debe responder un inciso como mínimo");
                 }else{
+                    System.out.println("ok dar2");
                     compruebaEjercicioMarcaX();
                     
                 }           
@@ -727,9 +736,16 @@ public class ResolverEjercicio extends javax.swing.JDialog {
         if (guardado) {
             JOptionPane.showMessageDialog(null,"Usted tiene una nota de:  "+nota+" puntos");
             guardado=false;
-        }  
-        nota=0;
-        modelo=null;  
+            nota=0;
+            modelo=null;
+        } 
+        
+        
+        
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ejercicio completado");
+        }
     }//GEN-LAST:event_btncomprobarActionPerformed
 
     private void btnsiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsiguienteActionPerformed
@@ -872,6 +888,7 @@ public class ResolverEjercicio extends javax.swing.JDialog {
         try {
             controlusuarioejerc.create(modelousuario);
             JOptionPane.showMessageDialog(null,"Las respuesta fueron guardadas en la base de datos");
+            ejerActual = true;
             guardado=true;
         } catch (Exception ex) {
             Logger.getLogger(ResolverEjercicio.class.getName()).log(Level.SEVERE, null, ex);
