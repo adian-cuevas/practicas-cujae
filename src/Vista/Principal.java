@@ -1022,6 +1022,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jChBdr1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jChBdr1ActionPerformed(evt);
+            }
+        });
+
         lbldr1.setText("Ancho del espaldar");
         lbldr1.setToolTipText("");
         lbldr1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -2210,7 +2216,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelcalculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnfincalculo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(btnfincalculo, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                     .addComponent(btnatrascalculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2230,6 +2236,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(lblejercicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1005, 0, 50, -1));
 
         btnayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ayuda.jpg"))); // NOI18N
+        btnayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnayudaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnayuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(1059, 0, 50, 40));
 
         jMenuBar1.setEnabled(false);
@@ -2340,8 +2351,8 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-
+    
+    
     private void lblejercicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblejercicioMouseClicked
         // TODO add your handling code here:
         if (autenticado) {
@@ -3660,6 +3671,14 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblbatonMouseClicked
 
+    private void jChBdr1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChBdr1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jChBdr1ActionPerformed
+
+    private void btnayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnayudaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnayudaActionPerformed
+
     //*******************************************FUNCIONES AGREGADAS DE LAS OTRAS CLASES
     private void creaExpresion(String valor) {
         String expresionauxiliar = expresionlogica;
@@ -4655,6 +4674,7 @@ public class Principal extends javax.swing.JFrame {
                         //}
                         txtAEnunciado.setText("");
                         txtAEnunciado.setText(modeloexp.getDescripcion());
+                        InicializaAllComponentes();
                         llenarSujetosComboBox();
                     }
                 }
@@ -4862,7 +4882,7 @@ public class Principal extends javax.swing.JFrame {
         lblpupitre.setEnabled(valor);
         panelpuestos.setEnabled(valor);
     }
-
+    
     private void validaColumnaBoton() {
         boolean correcto = false;
         modeltabla = (DefaultTableModel) tabladimension.getModel();

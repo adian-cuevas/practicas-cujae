@@ -1331,6 +1331,9 @@
                       </Events>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="jChBdr1">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jChBdr1ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lbldr1">
                       <Properties>
@@ -2603,7 +2606,7 @@
                       <Component id="jPanel3" min="-2" pref="90" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnfincalculo" pref="34" max="32767" attributes="0"/>
+                          <Component id="btnfincalculo" pref="287" max="32767" attributes="0"/>
                           <Component id="btnatrascalculo" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -3111,6 +3114,9 @@
           <Image iconType="3" name="/Imagenes/ayuda.jpg"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnayudaActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="1059" y="0" width="50" height="40"/>
