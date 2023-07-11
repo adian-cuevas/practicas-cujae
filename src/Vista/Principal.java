@@ -15,6 +15,7 @@ import Controlador.ErrorJpaController;
 import Controlador.RespuestaExperimentacionJpaController;
 import Controlador.DimensionesJpaController;
 import Controlador.FormulaDrJpaController;
+import Controlador.MedioJpaController;
 
 import Modelo.PosicionesDimensiones;
 import Modelo.DimensionesRelevantes;
@@ -27,6 +28,7 @@ import Modelo.Error;
 import Modelo.Posicionespuestotrabajo;
 import Modelo.RespuestaExperimentacion;
 import Modelo.Dimensiones;
+import Modelo.Medio;
 //import Modelo.*;
 
 import Util.Control;
@@ -66,7 +68,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
-
 import sun.awt.image.ByteArrayImageSource;
 import sun.awt.image.ToolkitImage;
 
@@ -81,7 +82,6 @@ public class Principal extends javax.swing.JFrame {
      */
     //***********************************************************estudiante1 inicia
     public static int muestra = 0;
-    static boolean lblbat = false;
     static boolean lbloav = false;
     static boolean lblfce = false;
     static boolean lblmi = false;
@@ -120,6 +120,7 @@ public class Principal extends javax.swing.JFrame {
     private Experimentacion modeloexp;
     private Dimensiones modelodimensiones;
     private Instrumento modeloInstrumento;
+    private Medio modeloMedio;
     private Sujeto sujetoseleccionado = null;
     private Error auxerrorCE;
     private Error auxerrorExp;
@@ -131,6 +132,7 @@ public class Principal extends javax.swing.JFrame {
     private FormulaDrJpaController controlformula;
     private DimensionesJpaController controldimensiones;
     private InstrumentoJpaController controlinstrumento;
+    private MedioJpaController controlMedio;
     private ExperimentacionJpaController controlexperimentacion;
     private PosturasJpaController controlpostura;
     private PosicionesDimensionesJpaController controlposicionesdimensiones;
@@ -277,6 +279,7 @@ public class Principal extends javax.swing.JFrame {
         controlsujetoposiciones = new SujetoPosicionesJpaController(javax.persistence.Persistence.createEntityManagerFactory("Prueba5PU"));
         controlexperimentacion = new ExperimentacionJpaController(javax.persistence.Persistence.createEntityManagerFactory("Prueba5PU"));
         controlinstrumento = new InstrumentoJpaController(javax.persistence.Persistence.createEntityManagerFactory("Prueba5PU"));
+        controlMedio = new MedioJpaController(javax.persistence.Persistence.createEntityManagerFactory("Prueba5PU"));
         controldimensiones = new DimensionesJpaController(javax.persistence.Persistence.createEntityManagerFactory("Prueba5PU"));
         controlrespt = new RespuestaExperimentacionJpaController(javax.persistence.Persistence.createEntityManagerFactory("Prueba5PU"));
 //variables
@@ -338,7 +341,6 @@ public class Principal extends javax.swing.JFrame {
         lblsillaburo = new javax.swing.JLabel();
         lblpuestotrabajo = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        lblbaton = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         panelrespuestaexperimentacion = new javax.swing.JPanel();
         panelprincipal = new javax.swing.JPanel();
@@ -601,7 +603,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblagenciaviajes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblagenciaviajes.setText("Tallímetro o estadiómetro");
+        lblagenciaviajes.setText("Estadiómetro");
         lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblagenciaviajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblagenciaviajes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -621,7 +623,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         lblmaquinaimpresion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblmaquinaimpresion.setText("Cinta antropométrica");
+        lblmaquinaimpresion.setText("Cinta métrica");
         lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblmaquinaimpresion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblmaquinaimpresion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -655,16 +657,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel18.setText("1. Seleccione un medio");
 
-        lblbaton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblbaton.setText("Batón");
-        lblbaton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        lblbaton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblbaton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblbatonMouseClicked(evt);
-            }
-        });
-
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel19.setText("2. Seleccione un instrumento");
 
@@ -674,7 +666,6 @@ public class Principal extends javax.swing.JFrame {
             panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lbltrabajopc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblbaton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelpuestosLayout.createSequentialGroup()
                 .addGroup(panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -692,9 +683,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbltrabajopc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblbaton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblagenciaviajes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1750,14 +1739,14 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelimagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelimagen.getAccessibleContext().setAccessibleName("");
@@ -2889,7 +2878,6 @@ public class Principal extends javax.swing.JFrame {
             panelexperimentacion.setVisible(false);
             panelpuestos.setVisible(false);
             panelinstrumento.setVisible(true);
-            
 
             //aqui comienza el codigo uerte de este panel
             llenarComboBoxDimensionesDiseno();
@@ -2898,8 +2886,8 @@ public class Principal extends javax.swing.JFrame {
             //llenarComboBoxPosiciones();
             btncalculo.setEnabled(false);
             btnreiniciar.setEnabled(false);
-            cleanPanelCalculo();  
-            
+            cleanPanelCalculo();
+
         }
     }//GEN-LAST:event_btnpasarAcalculardisenoActionPerformed
 
@@ -3035,17 +3023,16 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lbltrabajopc.isEnabled()) {
             System.err.println("abilitado en Trabajo PC");
-            lblbat = false;
             lblfce = false;
             lbloav = false;
             lblmi = false;
             lblp = false;
             lblsbr = false;
             inicializaComponentes();
-            tabladimension.setEnabled(true);
-            sptabladimensiones.setEnabled(true);
+            //tabladimension.setEnabled(true);
+            //sptabladimensiones.setEnabled(true);
             jScrollPane1.setEnabled(true);
-            habilitaPanelInstrumentos(false);
+            //habilitaPanelInstrumentos(false);
         }
         System.err.println("Di click en Trabajo PC");
 
@@ -3055,7 +3042,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblagenciaviajes.isEnabled()) {
             System.err.println("abilitado en Agencia de viaje");
-            lblbat = false;
             lbloav = true;
             lblfce = false;
             lblmi = false;
@@ -3075,7 +3061,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblfabricacomponentes.isEnabled()) {
             System.err.println("abilitado en fabrica de componente");
-            lblbat = false;
             lblfce = true;
             lbloav = false;
             lblmi = false;
@@ -3095,7 +3080,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblmaquinaimpresion.isEnabled()) {
             System.err.println("abilitado en Maquina de Impresion");
-            lblbat = false;
             lblmi = true;
             lbloav = false;
             lblfce = false;
@@ -3115,7 +3099,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblpupitre.isEnabled()) {
             System.err.println("abilitado en Pupitre");
-            lblbat = false;
             lblp = true;
             lbloav = false;
             lblfce = false;
@@ -3135,7 +3118,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblsillaburo.isEnabled()) {
             System.err.println("abilitado en Silla buro");
-            lblbat = false;
             lblsbr = true;
             lbloav = false;
             lblfce = false;
@@ -3238,27 +3220,27 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnautenticarActionPerformed
 
     private boolean comprueba() {
-        boolean result=false;
+        boolean result = false;
         List<DimensionesRelevantes> lista = modeloexp.getDimensionesRelevantesList();
         for (DimensionesRelevantes lista1 : lista) {
             //System.out.println("Las dimensiones son:  " + (String)cbdimrelv.getSelectedItem() +"  esta es la bd     " +lista1.getNombDimension()+"\n");
-            if (lista1.getNombDimension().equals((String)cbdimrelv.getSelectedItem())) {
+            if (lista1.getNombDimension().equals((String) cbdimrelv.getSelectedItem())) {
                 //JOptionPane.showMessageDialog(null, "***La dimension relevante esta en el modelo***");
                 //int pos = lista.indexOf(cbdimrelv.getSelectedItem());
                 DimensionesRelevantes dr = lista1;//lista.get(pos);
-                String auxexp=controlformula.MostrarFR(dr.getIddimensionesRelevantes()).getFormulacion();
-                ArrayList<String> auxlist= guardaPartes(expresionlogica);
-                result=igualExpresion(auxlist,auxexp);
-            } 
+                String auxexp = controlformula.MostrarFR(dr.getIddimensionesRelevantes()).getFormulacion();
+                ArrayList<String> auxlist = guardaPartes(expresionlogica);
+                result = igualExpresion(auxlist, auxexp);
+            }
         }
-        
-        if(result){
+
+        if (result) {
             JOptionPane.showMessageDialog(null, "Formula conformada correctamente");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Formula INCORRECTA");
         }
-        
-        return  result;
+
+        return result;
     }
 
     public ArrayList<String> guardaPartes(String valor) {
@@ -3429,7 +3411,7 @@ public class Principal extends javax.swing.JFrame {
         InicializaAllComponentes();
         clickpuestotrabajo = false;
         cleanPanelCalculo();
-        
+
         panelpuestos.setVisible(false);
         modeloexp = null;
     }//GEN-LAST:event_btnfincalculoActionPerformed
@@ -3656,10 +3638,6 @@ public class Principal extends javax.swing.JFrame {
         System.out.println("di click en combo");
     }//GEN-LAST:event_jcbmuestraMousePressed
 
-    private void lblbatonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbatonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblbatonMouseClicked
-
     //*******************************************FUNCIONES AGREGADAS DE LAS OTRAS CLASES
     private void creaExpresion(String valor) {
         String expresionauxiliar = expresionlogica;
@@ -3711,7 +3689,7 @@ public class Principal extends javax.swing.JFrame {
             case "holgura de calzado": {
                 valoraux = holgc;
                 asignaOperadores(valoraux);
-                expresionnumerica = expresionauxiliar + String.valueOf(valoraux)+"cm";
+                expresionnumerica = expresionauxiliar + String.valueOf(valoraux) + "cm";
                 break;
             }
             case "^2": {
@@ -3880,8 +3858,8 @@ public class Principal extends javax.swing.JFrame {
         if (lbloav) {
             modeloInstrumento = controlinstrumento.Mostrar(lblagenciaviajes.getText());
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-            muestraImagen();
-            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            muestraImagen(false);
+            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3889,8 +3867,8 @@ public class Principal extends javax.swing.JFrame {
         } else if (lblfce) {
             modeloInstrumento = controlinstrumento.Mostrar(lblfabricacomponentes.getText());
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-            muestraImagen();
-            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            muestraImagen(false);
+            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3898,8 +3876,8 @@ public class Principal extends javax.swing.JFrame {
         } else if (lblmi) {
             modeloInstrumento = controlinstrumento.Mostrar(lblmaquinaimpresion.getText());
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-            muestraImagen();
-            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            muestraImagen(false);
+            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3907,8 +3885,8 @@ public class Principal extends javax.swing.JFrame {
         } else if (lblp) {
             modeloInstrumento = controlinstrumento.Mostrar(lblpupitre.getText());
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-            muestraImagen();
-            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            muestraImagen(false);
+            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3916,30 +3894,32 @@ public class Principal extends javax.swing.JFrame {
         } else if (lblsbr) {
             modeloInstrumento = controlinstrumento.Mostrar(lblsillaburo.getText());
             lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-            muestraImagen();
-            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            muestraImagen(false);
+            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         } else {
-            modeloInstrumento = controlinstrumento.Mostrar(lbltrabajopc.getText());
+            modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-            muestraImagen();
-            lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-            lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-            lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-            lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-            lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            muestraImagen(true);
         }
     }
 
-    private void muestraImagen() {
-//        Image foto=getToolkit().getImage(getClass().getResource(src));
-        foto = new ToolkitImage(new ByteArrayImageSource(modeloInstrumento.getFotoInstrumento()));
-        foto = foto.getScaledInstance(lblpuestotrabajo.getWidth(), lblpuestotrabajo.getHeight(), Image.SCALE_DEFAULT);
-        lblpuestotrabajo.setIcon(new ImageIcon(foto));
-        foto = null;
+    private void muestraImagen(boolean isMedio) {
+        if (isMedio) {
+            foto = new ToolkitImage(new ByteArrayImageSource(modeloMedio.getFotoMedio()));
+            foto = foto.getScaledInstance(lblpuestotrabajo.getWidth(), lblpuestotrabajo.getHeight(), Image.SCALE_DEFAULT);
+            lblpuestotrabajo.setIcon(new ImageIcon(foto));
+            foto = null;
+        } else {
+            foto = new ToolkitImage(new ByteArrayImageSource(modeloInstrumento.getFotoInstrumento()));
+            foto = foto.getScaledInstance(lblpuestotrabajo.getWidth(), lblpuestotrabajo.getHeight(), Image.SCALE_DEFAULT);
+            lblpuestotrabajo.setIcon(new ImageIcon(foto));
+            foto = null;
+        }
+
     }
     //******************************************
 
@@ -5069,7 +5049,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblanchodecaderasentado;
     private javax.swing.JLabel lblanchodecodoacodo;
     private javax.swing.JLabel lblanchodelpie;
-    private javax.swing.JLabel lblbaton;
     private javax.swing.JLabel lbldiametrobiacromial;
     private javax.swing.JLabel lbldim1;
     private javax.swing.JLabel lbldr1;
