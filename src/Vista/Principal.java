@@ -255,10 +255,12 @@ public class Principal extends javax.swing.JFrame {
     private int canterrpostura = 0;
     private int canterrpuntos = 0;
     //****************************************************************prof cierra
+    private boolean lblb = false;
+    private ArrayList<Medio> mediosSeleccionados;
 
     public Principal() {
         super();
-
+        mediosSeleccionados = new ArrayList<>();
         initComponents();
 
         ponLaAyuda();
@@ -342,6 +344,7 @@ public class Principal extends javax.swing.JFrame {
         lblpuestotrabajo = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabelBaton = new javax.swing.JLabel();
         panelrespuestaexperimentacion = new javax.swing.JPanel();
         panelprincipal = new javax.swing.JPanel();
         spprincipal = new javax.swing.JScrollPane();
@@ -660,6 +663,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel19.setText("2. Seleccione un instrumento");
 
+        jLabelBaton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelBaton.setText("Batón");
+        jLabelBaton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabelBaton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelBatonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelpuestosLayout = new javax.swing.GroupLayout(panelpuestos);
         panelpuestos.setLayout(panelpuestosLayout);
         panelpuestosLayout.setHorizontalGroup(
@@ -667,15 +679,16 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lbltrabajopc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblagenciaviajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblfabricacomponentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblmaquinaimpresion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblpupitre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelpuestosLayout.createSequentialGroup()
                 .addGroup(panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblpuestotrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblsillaburo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(lblagenciaviajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblfabricacomponentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblmaquinaimpresion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblpupitre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelBaton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelpuestosLayout.setVerticalGroup(
             panelpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -683,7 +696,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbltrabajopc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelBaton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblagenciaviajes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3480,21 +3495,41 @@ public class Principal extends javax.swing.JFrame {
                 List<Medio> listaMedios = null;
                 boolean usaMedios = false;
                 boolean seleccionados = false;
-                try {
-                    listaMedios = modelodimensiones.getMedios_dimensionesListList();
-                    if ((listaMedios.size() >= 1)) {
-                        usaMedios = true;
-                        System.out.println("usa medios");
-                        if (listaMedios.get(0).getNombMedio().equals(modeloMedio.getNombMedio()) && lbltpc) {
-                            System.out.println("Esta seleccionado");
-                            seleccionados = true;
+//                try {
+//                    listaMedios = modelodimensiones.getMedios_dimensionesListList();
+//                    if ((listaMedios.size() >= 1)) {
+//                        usaMedios = true;
+//                        System.out.println("usa medios");
+//                        if (listaMedios.get(0).getNombMedio().equals(modeloMedio.getNombMedio()) && lbltpc) {
+//                            System.out.println("Esta seleccionado");
+//                            seleccionados = true;
+//                        }
+//                    } else {
+//                        if (lbltpc) {
+//                            seleccionados = true;
+//                        }
+//                        System.out.println("no se usa medio");
+//                    }
+//
+//                } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+//                    System.out.println(e.getMessage());
+//                }
+                listaMedios = modelodimensiones.getMedios_dimensionesListList();
+                if ((listaMedios.size() >= 1)) {
+                    usaMedios = true;
+                    System.out.println(listaMedios.size());
+                    for (int i = 0; i < listaMedios.size(); i++) {
+                        for (int j = 0; j < mediosSeleccionados.size(); j++) {
+                            if (listaMedios.get(i).getNombMedio().equals(mediosSeleccionados.get(j).getNombMedio())) {
+                                seleccionados = true;
+                            }
                         }
-                    } else {
-                        System.out.println("no se usa medio");
                     }
-
-                } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-                    System.out.println(e.getMessage());
+                } else {
+                    if (lbltpc || lblb) {//comprobando si estan seleccionados cuando no deberian
+                        seleccionados = true;
+                    }
+                    usaMedios = false;
                 }
 
                 if (modelodimensiones != null) {
@@ -3512,9 +3547,18 @@ public class Principal extends javax.swing.JFrame {
                         TeoriaGeneral.seleccion = dimension;
                         TeoriaGeneral aux = new TeoriaGeneral();
                         aux.setVisible(true);
+                        lbltpc = false;
+                        lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                        jLabelBaton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                        mediosSeleccionados.clear();
+                        lblb = false;
                     } else {
-                        if ((usaMedios && !seleccionados) || (!usaMedios && seleccionados)) {
+                        if ((usaMedios && !seleccionados) || (!usaMedios && seleccionados) || (listaMedios.size() < mediosSeleccionados.size())) {
                             lbltpc = false;
+                            lblb = false;
+                            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                            jLabelBaton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                            mediosSeleccionados.clear();
                             JOptionPane.showMessageDialog(null, "El instrumento es correcto pero no seleccionaste el medio que corresponde");
                             habilitaPanelInstrumentos(true);
                         } else {
@@ -3525,6 +3569,10 @@ public class Principal extends javax.swing.JFrame {
                             habilitaPanelPosturas(true);
                             modeloMedio = null;
                             lbltpc = false;
+                            lblb = false;
+                            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                            jLabelBaton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                            mediosSeleccionados.clear();
                             JOptionPane.showMessageDialog(null, "Escoja una de las posturas mostradas y señale en ella la dimensión seleccionada");
                         }
 
@@ -3674,6 +3722,24 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println("di click en combo");
     }//GEN-LAST:event_jcbmuestraMousePressed
+
+    private void jLabelBatonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBatonMouseClicked
+        // TODO add your handling code here:
+        if (jLabelBaton.isEnabled()) {
+            System.err.println("abilitado en Baton");
+            lblfce = false;
+            lbloav = false;
+            lblmi = false;
+            lblp = false;
+            lblsbr = false;
+            lblb = true;
+            inicializaComponentes();
+            //tabladimension.setEnabled(true);
+            //sptabladimensiones.setEnabled(true);
+            jScrollPane1.setEnabled(true);
+            //habilitaPanelInstrumentos(false);*
+        }
+    }//GEN-LAST:event_jLabelBatonMouseClicked
 
     //*******************************************FUNCIONES AGREGADAS DE LAS OTRAS CLASES
     private void creaExpresion(String valor) {
@@ -3942,8 +4008,31 @@ public class Principal extends javax.swing.JFrame {
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        } else if (lblb) {
+            modeloMedio = controlMedio.Mostrar(jLabelBaton.getText());
+            if (mediosSeleccionados.isEmpty()) {
+                mediosSeleccionados.add(modeloMedio);
+            } else if (mediosSeleccionados.contains(modeloMedio)) {
+                mediosSeleccionados.remove(modeloMedio);
+            } else {
+                mediosSeleccionados.add(modeloMedio);
+            }
+            jLabelBaton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+            muestraImagen(true);
+            lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         } else {
             modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
+            if (mediosSeleccionados.isEmpty()) {
+                mediosSeleccionados.add(modeloMedio);
+            } else if (mediosSeleccionados.contains(modeloMedio)) {
+                mediosSeleccionados.remove(modeloMedio);
+            } else {
+                mediosSeleccionados.add(modeloMedio);
+            }
             lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(true);
             lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -4888,6 +4977,7 @@ public class Principal extends javax.swing.JFrame {
         lblfabricacomponentes.setEnabled(valor);
         lblpupitre.setEnabled(valor);
         panelpuestos.setEnabled(valor);
+        jLabelBaton.setEnabled(valor);
     }
 
     private void validaColumnaBoton() {
@@ -5054,6 +5144,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelBaton;
     private javax.swing.JList jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
