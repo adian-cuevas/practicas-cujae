@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Modelo;
 
 import java.io.Serializable;
@@ -32,13 +31,19 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "dimensiones", catalog = "mydb", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Dimensiones.findAll", query = "SELECT d FROM Dimensiones d"),
-    @NamedQuery(name = "Dimensiones.findByIddimensiones", query = "SELECT d FROM Dimensiones d WHERE d.iddimensiones = :iddimensiones"),
-    @NamedQuery(name = "Dimensiones.findByNombmedid", query = "SELECT d FROM Dimensiones d WHERE d.nombmedid = :nombmedid"),
-    @NamedQuery(name = "Dimensiones.findByDescripMedida", query = "SELECT d FROM Dimensiones d WHERE d.descripMedida = :descripMedida"),
-    @NamedQuery(name = "Dimensiones.findByCriterioDeUso", query = "SELECT d FROM Dimensiones d WHERE d.criterioDeUso = :criterioDeUso"),
+    @NamedQuery(name = "Dimensiones.findAll", query = "SELECT d FROM Dimensiones d")
+    ,
+    @NamedQuery(name = "Dimensiones.findByIddimensiones", query = "SELECT d FROM Dimensiones d WHERE d.iddimensiones = :iddimensiones")
+    ,
+    @NamedQuery(name = "Dimensiones.findByNombmedid", query = "SELECT d FROM Dimensiones d WHERE d.nombmedid = :nombmedid")
+    ,
+    @NamedQuery(name = "Dimensiones.findByDescripMedida", query = "SELECT d FROM Dimensiones d WHERE d.descripMedida = :descripMedida")
+    ,
+    @NamedQuery(name = "Dimensiones.findByCriterioDeUso", query = "SELECT d FROM Dimensiones d WHERE d.criterioDeUso = :criterioDeUso")
+    ,
     @NamedQuery(name = "Dimensiones.findBySigla", query = "SELECT d FROM Dimensiones d WHERE d.sigla = :sigla")})
 public class Dimensiones implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,6 +78,9 @@ public class Dimensiones implements Serializable {
     @JoinColumn(name = "idinstrumento", referencedColumnName = "idinstrumento")
     @ManyToOne
     private Instrumento idinstrumento;
+
+    @ManyToMany
+    private List<Medio> medios_dimensionesList;
 
     public Dimensiones() {
     }
@@ -145,6 +153,15 @@ public class Dimensiones implements Serializable {
         this.dimensionesRelevantesList = dimensionesRelevantesList;
     }
 
+    @XmlTransient
+    public List<Medio> getMedios_dimensionesListList() {
+        return medios_dimensionesList;
+    }
+
+    public void setMedios_dimensionesListList(List<Medio> medios_dimensionesList) {
+        this.medios_dimensionesList = medios_dimensionesList;
+    }
+
     public Posturas getPosturasIdposturas() {
         return posturasIdposturas;
     }
@@ -201,5 +218,5 @@ public class Dimensiones implements Serializable {
     public String toString() {
         return "Modelo.Dimensiones[ iddimensiones=" + iddimensiones + " ]";
     }
-    
+
 }

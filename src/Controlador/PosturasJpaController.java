@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controlador;
 
 import Controlador.exceptions.NonexistentEntityException;
@@ -21,7 +20,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Eduardo
+ * @author adian
  */
 public class PosturasJpaController implements Serializable {
 

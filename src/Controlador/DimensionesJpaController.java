@@ -25,7 +25,7 @@ import javax.persistence.NoResultException;
 
 /**
  *
- * @author Eduardo
+ * @author adian
  */
 public class DimensionesJpaController implements Serializable {
 
@@ -304,4 +304,5 @@ public class DimensionesJpaController implements Serializable {
             return null;
         }
     }
+
 }

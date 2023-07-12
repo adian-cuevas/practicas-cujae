@@ -120,7 +120,7 @@ public class Principal extends javax.swing.JFrame {
     private Experimentacion modeloexp;
     private Dimensiones modelodimensiones;
     private Instrumento modeloInstrumento;
-    private Medio modeloMedio;
+    private Medio modeloMedio = null;
     private Sujeto sujetoseleccionado = null;
     private Error auxerrorCE;
     private Error auxerrorExp;
@@ -3028,6 +3028,7 @@ public class Principal extends javax.swing.JFrame {
             lblmi = false;
             lblp = false;
             lblsbr = false;
+            lbltpc = true;
             inicializaComponentes();
             //tabladimension.setEnabled(true);
             //sptabladimensiones.setEnabled(true);
@@ -3459,8 +3460,14 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private boolean tieneMedio() {
+        boolean tiene = false;
+        return tiene;
+    }
+
     private void tabladimensionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabladimensionMouseClicked
         // TODO add your handling code here:
+
         auxerrorExp.setCantidad(0);
         if (tabladimension.isEnabled()) {
             Object obj = modeltabla.getValueAt(tabladimension.getSelectedRow(), tabladimension.getSelectedColumn());//para saber si la celda esta vacia
@@ -3468,9 +3475,30 @@ public class Principal extends javax.swing.JFrame {
             if (tabladimension.getSelectedColumn() != 0 && obj == null) {
                 dimension = (String) modeltabla.getValueAt(tabladimension.getSelectedRow(), 0);
                 modelodimensiones = controldimensiones.Mostrar(dimension);
+
+                //Probando si la dimension tiene medio o no
+                List<Medio> listaMedios = null;
+                boolean usaMedios = false;
+                boolean seleccionados = false;
+                try {
+                    listaMedios = modelodimensiones.getMedios_dimensionesListList();
+                    if ((listaMedios.size() >= 1)) {
+                        usaMedios = true;
+                        System.out.println("usa medios");
+                        if (listaMedios.get(0).getNombMedio().equals(modeloMedio.getNombMedio()) && lbltpc) {
+                            System.out.println("Esta seleccionado");
+                            seleccionados = true;
+                        }
+                    } else {
+                        System.out.println("no se usa medio");
+                    }
+
+                } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+                    System.out.println(e.getMessage());
+                }
+
                 if (modelodimensiones != null) {
                     if (!modelodimensiones.getIdinstrumento().getNombInstrumento().equals(modeloInstrumento.getNombInstrumento()) && retroalimentacion_veces < 3) {
-
                         retroalimentacion_veces++;
                         auxerrorExp.setCantidad(auxerrorExp.getCantidad() + retroalimentacion_veces);
                         lblpuestotrabajo.setIcon(null);
@@ -3485,12 +3513,21 @@ public class Principal extends javax.swing.JFrame {
                         TeoriaGeneral aux = new TeoriaGeneral();
                         aux.setVisible(true);
                     } else {
-                        retroalimentacion_veces = 0;
-                        habilitaPanelInstrumentos(false);
-                        sptabladimensiones.setEnabled(false);
-                        tabladimension.setEnabled(false);
-                        habilitaPanelPosturas(true);
-                        JOptionPane.showMessageDialog(null, "Escoja una de las posturas mostradas y señale en ella la dimensión seleccionada");
+                        if ((usaMedios && !seleccionados) || (!usaMedios && seleccionados)) {
+                            lbltpc = false;
+                            JOptionPane.showMessageDialog(null, "El instrumento es correcto pero no seleccionaste el medio que corresponde");
+                            habilitaPanelInstrumentos(true);
+                        } else {
+                            retroalimentacion_veces = 0;
+                            habilitaPanelInstrumentos(false);
+                            sptabladimensiones.setEnabled(false);
+                            tabladimension.setEnabled(false);
+                            habilitaPanelPosturas(true);
+                            modeloMedio = null;
+                            lbltpc = false;
+                            JOptionPane.showMessageDialog(null, "Escoja una de las posturas mostradas y señale en ella la dimensión seleccionada");
+                        }
+
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "La dimensión tomada no se encontró en la base de datos");
@@ -3857,6 +3894,7 @@ public class Principal extends javax.swing.JFrame {
     private void inicializaComponentes() {
         if (lbloav) {
             modeloInstrumento = controlinstrumento.Mostrar(lblagenciaviajes.getText());
+            modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
             //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3866,6 +3904,7 @@ public class Principal extends javax.swing.JFrame {
             lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         } else if (lblfce) {
             modeloInstrumento = controlinstrumento.Mostrar(lblfabricacomponentes.getText());
+            modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
             //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3875,6 +3914,7 @@ public class Principal extends javax.swing.JFrame {
             lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         } else if (lblmi) {
             modeloInstrumento = controlinstrumento.Mostrar(lblmaquinaimpresion.getText());
+            modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
             //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3884,6 +3924,7 @@ public class Principal extends javax.swing.JFrame {
             lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         } else if (lblp) {
             modeloInstrumento = controlinstrumento.Mostrar(lblpupitre.getText());
+            modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
             //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3893,6 +3934,7 @@ public class Principal extends javax.swing.JFrame {
             lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         } else if (lblsbr) {
             modeloInstrumento = controlinstrumento.Mostrar(lblsillaburo.getText());
+            modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
             //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3904,6 +3946,11 @@ public class Principal extends javax.swing.JFrame {
             modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(true);
+            lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         }
     }
 

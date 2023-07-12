@@ -6,6 +6,7 @@
 package Modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,10 +15,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -52,6 +55,9 @@ public class Medio implements Serializable {
     @Lob
     @Column(name = "foto_medio", nullable = false)
     private byte[] fotoMedio;
+
+    @ManyToMany(mappedBy = "medios_dimensionesList")
+    private List<Dimensiones> dimensiones_mediosList;
 
     public Medio() {
     }
@@ -97,6 +103,15 @@ public class Medio implements Serializable {
 
     public void setFotoMedio(byte[] fotoMedio) {
         this.fotoMedio = fotoMedio;
+    }
+
+    @XmlTransient
+    public List<Dimensiones> getDimensiones_mediosListList() {
+        return dimensiones_mediosList;
+    }
+
+    public void setDimensiones_mediosListList(List<Dimensiones> dimensiones_mediosList) {
+        this.dimensiones_mediosList = dimensiones_mediosList;
     }
 
     @Override

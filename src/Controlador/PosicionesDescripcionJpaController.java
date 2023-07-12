@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controlador;
 
 import Controlador.exceptions.IllegalOrphanException;
@@ -23,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Eduardo
+ * @author adian
  */
 public class PosicionesDescripcionJpaController implements Serializable {
 

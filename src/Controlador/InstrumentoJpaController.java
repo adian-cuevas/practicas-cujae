@@ -21,7 +21,7 @@ import javax.persistence.NoResultException;
 
 /**
  *
- * @author Eduardo
+ * @author adian
  */
 public class InstrumentoJpaController implements Serializable {
 
@@ -199,4 +199,5 @@ public class InstrumentoJpaController implements Serializable {
         }
 
     }
+
 }
