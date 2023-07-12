@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro de texto de Ergonomía</title>
+</head>
+
+<body>
+    <!-- <p>Puede descargar el libro completo de Ergonomía para estudiantes de la facultad de ingeniería industrial
+        <a href="./images/libro_texto.7z" download> aquí: </a>
+    </p> -->
+    <a href="javascript:void(0)" onclick="downloadFile('./images/libro_texto.7z')">Descargar archivo</a>
+
+    <iframe id="downloadFrame" style="display:none;"></iframe>
+
+    <script>
+        function downloadFile(fileUrl) {
+            var downloadFrame = document.getElementById('downloadFrame');
+            downloadFrame.src = fileUrl;
+        }
+    </script>
+</body>
+
+</html>
