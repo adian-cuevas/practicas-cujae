@@ -2905,7 +2905,8 @@ public class Principal extends javax.swing.JFrame {
             paneldimensiones.setVisible(false);
             panelexperimentacion.setVisible(false);
             panelpuestos.setVisible(false);
-            panelinstrumento.setVisible(true);
+            panelinstrumento.setVisible(false);
+            panelpuestos.setVisible(false);
             
 
             //aqui comienza el codigo uerte de este panel
@@ -2916,6 +2917,7 @@ public class Principal extends javax.swing.JFrame {
             btncalculo.setEnabled(false);
             btnreiniciar.setEnabled(false);
             cleanPanelCalculo();  
+            clickpuestotrabajo = true;
             
         }
     }//GEN-LAST:event_btnpasarAcalculardisenoActionPerformed
@@ -3329,7 +3331,7 @@ public class Principal extends javax.swing.JFrame {
         int action = JOptionPane.showOptionDialog(null, "Desea registrar el calculo realizado", "Información",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
         if (action == JOptionPane.YES_OPTION) {
-            listamodelcalculo.addElement(cbdimrelv.getSelectedItem() + " = " + expresionlogica);
+            listamodelcalculo.addElement(cbdimrelv.getSelectedItem() + " = " + expresionlogica + " = " + resultado + "cm");
             jList1.setModel(listamodelcalculo);
         }
         cleanPanelCalculo();
@@ -3397,6 +3399,8 @@ public class Principal extends javax.swing.JFrame {
         panelprincipal.setVisible(false);
         panelinstrumento.setVisible(false);
         panelposturas.setVisible(true);
+        clickpuestotrabajo = false;
+        panelpuestos.setVisible(true);
     }//GEN-LAST:event_btnatrascalculoActionPerformed
 
     private void btnfincalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfincalculoActionPerformed
@@ -4706,7 +4710,7 @@ public class Principal extends javax.swing.JFrame {
                     model.setRowCount(0);
                     tablamuestra.repaint();
 
-                    if (autenticado && lbl.isEnabled()) {
+                    if (autenticado && !clickpuestotrabajo && lbl.isEnabled()) {
                         habilitarLabelInstrumento();
                         //no la voy a poner null porque la voy a utilizar
                         fotoprincipal = lblinstrumentos.getIcon();
@@ -4725,7 +4729,7 @@ public class Principal extends javax.swing.JFrame {
                         panelprincipal.setVisible(false);
                         panelinstrumento.setVisible(true);
                         panelpuestos.setVisible(false);
-                        clickpuestotrabajo = true;
+                       // clickpuestotrabajo = true;
                         //}
                         txtAEnunciado.setText("");
                         txtAEnunciado.setText(modeloexp.getDescripcion());
