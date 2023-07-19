@@ -10,6 +10,21 @@
 <project name="Laboratorio_Virtual" default="default" basedir=".">
     <description>Builds, tests, and runs the project Laboratorio Virtual.</description>
     <import file="nbproject/build-impl.xml"/>
+    
+<!--    <target name="resolve-dependencies">
+        <ivy:retrieve />
+    </target>
+    <target name="create-jar" depends="resolve-dependencies">
+        <jar destfile="ejecutable.jar" basedir="build">
+            <zipgroupfileset dir="lib">
+                <include name="*.jar" />
+            </zipgroupfileset>
+            <manifest>
+                <attribute name="Main-Class" value="Run.Main" />
+            </manifest>
+        </jar>
+    </target>-->
+
     <!--
 
     There exist several targets which are by default empty and which can be 

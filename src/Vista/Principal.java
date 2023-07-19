@@ -3175,7 +3175,17 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        if (Control.fichero.exists()) {
+            if (Control.fichero.delete()) {
+                System.err.println("se borro");
+                System.exit(0);//cierra aplicacion
+            } else {
+                System.err.println("no se borro. hubo un error");
+            }
+        } else {
+            System.exit(0);
+        }
+        //System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void mniempezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniempezarActionPerformed
@@ -3495,25 +3505,6 @@ public class Principal extends javax.swing.JFrame {
                 List<Medio> listaMedios = null;
                 boolean usaMedios = false;
                 boolean seleccionados = false;
-//                try {
-//                    listaMedios = modelodimensiones.getMedios_dimensionesListList();
-//                    if ((listaMedios.size() >= 1)) {
-//                        usaMedios = true;
-//                        System.out.println("usa medios");
-//                        if (listaMedios.get(0).getNombMedio().equals(modeloMedio.getNombMedio()) && lbltpc) {
-//                            System.out.println("Esta seleccionado");
-//                            seleccionados = true;
-//                        }
-//                    } else {
-//                        if (lbltpc) {
-//                            seleccionados = true;
-//                        }
-//                        System.out.println("no se usa medio");
-//                    }
-//
-//                } catch (java.lang.ArrayIndexOutOfBoundsException e) {
-//                    System.out.println(e.getMessage());
-//                }
                 listaMedios = modelodimensiones.getMedios_dimensionesListList();
                 if ((listaMedios.size() >= 1)) {
                     usaMedios = true;
@@ -4744,9 +4735,10 @@ public class Principal extends javax.swing.JFrame {
                     System.err.println("Dando click en el puesto de trabajo");
 
                     //Actualizando tabla de muestra cada vez que se cambia de puesto de trabajo
-                    DefaultTableModel model = (DefaultTableModel) tablamuestra.getModel();
-                    model.setRowCount(0);
-                    tablamuestra.repaint();
+                    ((DefaultTableModel) tablamuestra.getModel()).setRowCount(0);
+//                    DefaultTableModel model = (DefaultTableModel) tablamuestra.getModel();
+//                    model.setRowCount(0);
+                    //tablamuestra.repaint();
 
                     if (autenticado && lbl.isEnabled()) {
                         habilitarLabelInstrumento();
@@ -4771,6 +4763,7 @@ public class Principal extends javax.swing.JFrame {
                         //}
                         txtAEnunciado.setText("");
                         txtAEnunciado.setText(modeloexp.getDescripcion());
+                        //esto es para que el comboBox no nos muestre una excepcion
                         llenarSujetosComboBox();
                     }
                 }

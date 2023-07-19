@@ -5,7 +5,22 @@ topicimage="ItemIco"-->
            <tocitem text="Ventana principal"    target="ventana_principal"/>
            <tocitem text="Ventana secundaria"    target="ventana_secundaria"/>
         </tocitem>
-        <tocitem text="Otra Carpeta" target="">
-            <tocitem text="Ejemplo adfa"    target="ejemplo"/>
+        <tocitem text="Libro de Texto" target="">
+            <tocitem text="CAPITULO I. INTRODUCCION" target="">
+                <tocitem text="LA ERGONOMIA. SUS OBJETIVOS"    target="capitulo-1.1"/>
+                <tocitem text="ORIGEN, DESARROLLO Y AMPLITUD DE LA ERGONOMIA"    target="capitulo-1.2"/>
+                <tocitem text="EL SISTEMA TRABAJADOR - MEDIOS DE RODUCCION – AMBIENTE LABORAL"    target="capitulo-1.3"/>
+                <tocitem text="EVALUACION DE IMPACTOS O CONSECUENCIAS DEL TRABAJO
+                 CON COMPUTADORAS PARA LOS HOMBRES QUE LAS OPERAN"    target="capitulo-1.4"/>
+                <tocitem text="ANEXOS"    target="capitulo-1.5"/>
+            </tocitem>
+            <tocitem text="CAPITULO II. ANTROPOMETRIA" target="">
+                <tocitem text="EL ESTUDIO ANTROPOMETRICO"    target="capitulo-2.1"/>
+                <tocitem text="DIMENSIONES RELEVANTES DEL CUERPO HUMANO"    target="capitulo-2.2"/>
+                <tocitem text="PRINCIPIOS PARA LA APLICACION DE LA INFORMACION ANTROPOMETRICA"    target="capitulo-2.3"/>
+                <tocitem text="ETAPAS PARA LA REALIZACION DE UN DISEÑO ANTROPOMETRICO."    target="capitulo-2.4"/>
+                <tocitem text="CRITERIOS PARA LA EVALUACION Y DISEÑO DE PUESTOS DE TRABAJO"    target="capitulo-2.5"/>
+                <tocitem text="ANEXOS"    target="capitulo-2.6"/>
+            </tocitem>
         </tocitem>
 </toc>
