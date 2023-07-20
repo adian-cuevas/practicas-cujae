@@ -5,10 +5,6 @@ topicimage="ItemIco"-->
            <tocitem text="Ventana principal"    target="ventana_principal"/>
            <tocitem text="Ventana secundaria"    target="ventana_secundaria"/>
         </tocitem>
-<<<<<<< HEAD
-        <tocitem text="Libros" target="">
-            <tocitem text="Libro de Texto de Ergonomia"    target="libro_texto"/>
-=======
         <tocitem text="Libro de Texto" target="">
             <tocitem text="CAPITULO I. INTRODUCCION" target="">
                 <tocitem text="LA ERGONOMIA. SUS OBJETIVOS"    target="capitulo-1.1"/>
@@ -26,6 +22,5 @@ topicimage="ItemIco"-->
                 <tocitem text="CRITERIOS PARA LA EVALUACION Y DISEÑO DE PUESTOS DE TRABAJO"    target="capitulo-2.5"/>
                 <tocitem text="ANEXOS"    target="capitulo-2.6"/>
             </tocitem>
->>>>>>> secundaria
         </tocitem>
 </toc>

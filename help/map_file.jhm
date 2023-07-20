@@ -6,9 +6,6 @@ PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN"
    <mapID target="aplicacion" url="html/index.html" />
    <mapID target="ventana_principal" url="html/principal.html" />
    <mapID target="ventana_secundaria" url="html/secundaria.html" />
-<<<<<<< HEAD
-   <mapID target="libro_texto" url="html/libros.html" />
-=======
    <mapID target="capitulo-1.1" url="html/capitulo-1.1.html" />
    <mapID target="capitulo-1.2" url="html/capitulo-1.2.html" />
    <mapID target="capitulo-1.3" url="html/capitulo-1.3.html" />
@@ -20,5 +17,4 @@ PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN"
    <mapID target="capitulo-2.4" url="html/capitulo-2.4.html" />
    <mapID target="capitulo-2.5" url="html/capitulo-2.5.html" />
    <mapID target="capitulo-2.6" url="html/capitulo-2.6.html" />
->>>>>>> secundaria
 </map>

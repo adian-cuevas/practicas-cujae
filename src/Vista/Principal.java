@@ -3068,17 +3068,13 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lbltrabajopc.isEnabled()) {
             System.err.println("abilitado en Trabajo PC");
-//<<<<<<< HEAD
-            lblfce = false;
-//=======
-//            lblbat = false;
-//>>>>>>> 30d2fb71f8451f3ccb820a1a49e2710e09c1dec7
             lbloav = false;
             lblfce = false;
             lblmi = false;
             lblp = false;
             lblsbr = false;
             lbltpc = true;
+            lblb = false;
             inicializaComponentes();
             //tabladimension.setEnabled(true);
             //sptabladimensiones.setEnabled(true);
@@ -3793,11 +3789,12 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jLabelBaton.isEnabled()) {
             System.err.println("abilitado en Baton");
-            lblfce = false;
             lbloav = false;
+            lblfce = false;
             lblmi = false;
             lblp = false;
             lblsbr = false;
+            lbltpc = false;
             lblb = true;
             inicializaComponentes();
             //tabladimension.setEnabled(true);
@@ -4111,22 +4108,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void muestraImagen(boolean isMedio) {
-//        if (isMedio) {
-//            foto = new ToolkitImage(new ByteArrayImageSource(modeloMedio.getFotoMedio()));
-//            if (lbltrabajopc.getText().equals("Silla antropométrica") || lbltrabajopc.getText().equals("Batón")) {
-//                foto = foto.getScaledInstance(lblpuestotrabajo.getWidth(), lblpuestotrabajo.getHeight(), Image.SCALE_DEFAULT);
-//                lblpuestotrabajo.setIcon(new ImageIcon(foto));
-//                foto = null;
-//            } else {
-//                foto = new ToolkitImage(new ByteArrayImageSource(modeloInstrumento.getFotoInstrumento()));
-//                foto = foto.getScaledInstance(lblpuestotrabajo.getWidth(), lblpuestotrabajo.getHeight(), Image.SCALE_DEFAULT);
-//                lblpuestotrabajo.setIcon(new ImageIcon(foto));
-//                foto = null;
-//            }
-//
-//        }
         if (isMedio) {
-            foto = new ToolkitImage(new ByteArrayImageSource(modeloMedio.getFotoInstrumento()));
+            foto = new ToolkitImage(new ByteArrayImageSource(modeloMedio.getFotoMedio()));
             foto = foto.getScaledInstance(lblpuestotrabajo.getWidth(), lblpuestotrabajo.getHeight(), Image.SCALE_DEFAULT);
             lblpuestotrabajo.setIcon(new ImageIcon(foto));
             foto = null;
