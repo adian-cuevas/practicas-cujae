@@ -6,5 +6,19 @@
         <indexitem text="Ejemplo JavaHelp"    target="aplicacion"/>
         <indexitem text="Ventana principal"    target="ventana_principal"/>
         <indexitem text="Ventana secundaria"    target="ventana_secundaria"/>
+<<<<<<< HEAD
         <indexitem text="Libro de Texto de Ergonomía"    target="libro_texto"/>
+=======
+        <indexitem text="Capitulo-1.1"    target="capitulo-1.1"/>
+        <indexitem text="Capitulo-1.2"    target="capitulo-1.2"/>
+        <indexitem text="Capitulo-1.3"    target="capitulo-1.3"/>
+        <indexitem text="Capitulo-1.4"    target="capitulo-1.4"/>
+        <indexitem text="Capitulo-1.5"    target="capitulo-1.5"/>
+        <indexitem text="Capitulo-2.1"    target="capitulo-2.1"/>
+        <indexitem text="Capitulo-2.2"    target="capitulo-2.2"/>
+        <indexitem text="Capitulo-2.3"    target="capitulo-2.3"/>
+        <indexitem text="Capitulo-2.4"    target="capitulo-2.4"/>
+        <indexitem text="Capitulo-2.5"    target="capitulo-2.5"/>
+        <indexitem text="Capitulo-2.6"    target="capitulo-2.6"/>
+>>>>>>> secundaria
 </index>
