@@ -50,6 +50,7 @@ public class MedioJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Medio persistentMedio = em.find(Medio.class, medio.getIdmedio());
             medio = em.merge(medio);
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -147,5 +148,4 @@ public class MedioJpaController implements Serializable {
         return null;
 
     }
-
 }

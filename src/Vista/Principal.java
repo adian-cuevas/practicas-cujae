@@ -23,13 +23,12 @@ import Modelo.Sujeto;
 import Modelo.SujetoPosiciones;
 import Modelo.Experimentacion;
 import Modelo.Instrumento;
+import Modelo.Medio;
 import Modelo.Usuario;
 import Modelo.Error;
 import Modelo.Posicionespuestotrabajo;
 import Modelo.RespuestaExperimentacion;
 import Modelo.Dimensiones;
-import Modelo.Medio;
-//import Modelo.*;
 
 import Util.Control;
 import Util.ReportesController;
@@ -493,10 +492,10 @@ public class Principal extends javax.swing.JFrame {
         btndivision = new javax.swing.JButton();
         panelopr2 = new javax.swing.JPanel();
         btnduplo = new javax.swing.JButton();
-        btnholgura = new javax.swing.JButton();
         btnpotencia = new javax.swing.JButton();
         cbtangente = new javax.swing.JComboBox();
         cbpercentil = new javax.swing.JComboBox();
+        btnholgura = new javax.swing.JButton();
         paneldiseno = new javax.swing.JPanel();
         lbldim1 = new javax.swing.JLabel();
         lblresultado = new javax.swing.JLabel();
@@ -1011,6 +1010,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jChBdr1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jChBdr1ActionPerformed(evt);
+            }
+        });
+
         lbldr1.setText("Ancho del espaldar");
         lbldr1.setToolTipText("");
         lbldr1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1102,92 +1107,96 @@ public class Principal extends javax.swing.JFrame {
             paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneldrLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(paneldrLayout.createSequentialGroup()
-                                    .addComponent(jChBdr2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lbldr2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(paneldrLayout.createSequentialGroup()
-                                    .addComponent(jChBdr1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lbldr1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneldrLayout.createSequentialGroup()
-                                .addComponent(jChBdr3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbldr3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13)))
-                        .addGroup(paneldrLayout.createSequentialGroup()
-                            .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneldrLayout.createSequentialGroup()
-                                    .addComponent(jChBdr4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lbldr4, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneldrLayout.createSequentialGroup()
-                                    .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jChBdr6)
-                                        .addComponent(jChBdr5))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbldr6, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbldr5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGap(13, 13, 13))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneldrLayout.createSequentialGroup()
-                            .addComponent(jChBdr7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbldr7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(paneldrLayout.createSequentialGroup()
-                        .addComponent(jChBdr8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbldr8, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldrLayout.createSequentialGroup()
-                        .addComponent(jChBdr9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbldr9, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneldrLayout.createSequentialGroup()
-                            .addComponent(jChBdr10)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbldr10, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(paneldrLayout.createSequentialGroup()
-                            .addComponent(jChBdr11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbldr11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(paneldrLayout.createSequentialGroup()
-                            .addComponent(jChBdr13)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbldr13, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(paneldrLayout.createSequentialGroup()
-                            .addComponent(jChBdr14)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbldr14, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(paneldrLayout.createSequentialGroup()
-                            .addComponent(jChBdr16)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbldr16, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(paneldrLayout.createSequentialGroup()
-                            .addComponent(jChBdr18)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbldr18, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(paneldrLayout.createSequentialGroup()
-                            .addComponent(jChBdr19)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbldr19, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(paneldrLayout.createSequentialGroup()
-                        .addComponent(jChBdr12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbldr12, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paneldrLayout.createSequentialGroup()
                         .addComponent(jChBdr15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbldr15, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lbldr15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(paneldrLayout.createSequentialGroup()
-                        .addComponent(jChBdr17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbldr17, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(paneldrLayout.createSequentialGroup()
+                                .addComponent(jChBdr16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbldr16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(paneldrLayout.createSequentialGroup()
+                                .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(paneldrLayout.createSequentialGroup()
+                                                    .addComponent(jChBdr2)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(lbldr2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(paneldrLayout.createSequentialGroup()
+                                                    .addComponent(jChBdr1)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(lbldr1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneldrLayout.createSequentialGroup()
+                                                .addComponent(jChBdr3)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lbldr3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(13, 13, 13)))
+                                        .addGroup(paneldrLayout.createSequentialGroup()
+                                            .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneldrLayout.createSequentialGroup()
+                                                    .addComponent(jChBdr4)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(lbldr4, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, paneldrLayout.createSequentialGroup()
+                                                    .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jChBdr6)
+                                                        .addComponent(jChBdr5))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addGroup(paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lbldr6, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lbldr5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGap(13, 13, 13))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneldrLayout.createSequentialGroup()
+                                            .addComponent(jChBdr7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(lbldr7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr8, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr9, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr13, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr18, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr19))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr17)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr17, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr12, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr14, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(paneldrLayout.createSequentialGroup()
+                                        .addComponent(jChBdr10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbldr10, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 32, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         paneldrLayout.setVerticalGroup(
             paneldrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1491,94 +1500,98 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(69, 69, 69)
                 .addGroup(paneldaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbanchodelpie)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblanchodelpie, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbsacropoplitea)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblsacropoplitea, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturasacrorotula)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturasacrorotula, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chblongituddelmuslo)
-                        .addGap(9, 9, 9)
-                        .addComponent(lbllongituddelmuslo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturademuslo)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturadelmusloxxxx, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
                         .addComponent(chbalcancemaximodelbrazo)
                         .addGap(9, 9, 9)
-                        .addComponent(lblalcancemaximodelbrazo, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblalcancemaximodelbrazo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturasubescapular)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturasubescapular, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbanchodecodoacodo)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblanchodecodoacodo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalcancelateraldelbrazo)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalcancelateraldelbrazo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturadelosojossentado)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturadelosojossentado, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturailiocrestal)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturailiocrestal, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturadelosojos)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturadelosojos, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturadelcodo)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturadelcodo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbestatura)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblestatura, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbdiametrobiacromial)
-                        .addGap(9, 9, 9)
-                        .addComponent(lbldiametrobiacromial, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalcanceminimodelbrazo)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalcanceminimodelbrazo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturadelarodilla)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturadelarodilla, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturadelcodosentado)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturadelcodosentado, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturadeojos1)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturadeojos1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturapoplitea)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturapoplitea, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbanchodecaderasentado)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblanchodecaderasentado, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneldaLayout.createSequentialGroup()
-                        .addComponent(chbalturailiocrestal11)
-                        .addGap(9, 9, 9)
-                        .addComponent(lblalturailiocrestal11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                        .addGroup(paneldaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbanchodelpie)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblanchodelpie, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbsacropoplitea)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblsacropoplitea, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturasacrorotula)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturasacrorotula, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chblongituddelmuslo)
+                                .addGap(9, 9, 9)
+                                .addComponent(lbllongituddelmuslo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturademuslo)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturadelmusloxxxx, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturadelosojossentado)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturadelosojossentado, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturailiocrestal)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturailiocrestal, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturadelosojos)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturadelosojos, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturadelcodo)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturadelcodo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbestatura)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblestatura, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbdiametrobiacromial)
+                                .addGap(9, 9, 9)
+                                .addComponent(lbldiametrobiacromial, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturadelarodilla)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturadelarodilla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturadelcodosentado)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturadelcodosentado, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturadeojos1)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturadeojos1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturapoplitea)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturapoplitea, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbanchodecaderasentado)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblanchodecaderasentado, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalturailiocrestal11)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalturailiocrestal11, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paneldaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(paneldaLayout.createSequentialGroup()
+                                    .addComponent(chbanchodecodoacodo)
+                                    .addGap(9, 9, 9)
+                                    .addComponent(lblanchodecodoacodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(paneldaLayout.createSequentialGroup()
+                                    .addComponent(chbalturasubescapular)
+                                    .addGap(9, 9, 9)
+                                    .addComponent(lblalturasubescapular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(paneldaLayout.createSequentialGroup()
+                                    .addComponent(chbalcancelateraldelbrazo)
+                                    .addGap(9, 9, 9)
+                                    .addComponent(lblalcancelateraldelbrazo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(paneldaLayout.createSequentialGroup()
+                                .addComponent(chbalcanceminimodelbrazo)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblalcanceminimodelbrazo, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 22, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         paneldaLayout.setVerticalGroup(
             paneldaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1986,7 +1999,7 @@ public class Principal extends javax.swing.JFrame {
                 btnrestaActionPerformed(evt);
             }
         });
-        panelopr1.add(btnresta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 50, -1));
+        panelopr1.add(btnresta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 50, -1));
 
         btnmultiplicacion.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnmultiplicacion.setText("*");
@@ -1997,7 +2010,7 @@ public class Principal extends javax.swing.JFrame {
                 btnmultiplicacionActionPerformed(evt);
             }
         });
-        panelopr1.add(btnmultiplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 50, -1));
+        panelopr1.add(btnmultiplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 50, -1));
 
         btnespesor.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnespesor.setText("Espesor");
@@ -2007,7 +2020,7 @@ public class Principal extends javax.swing.JFrame {
                 btnespesorActionPerformed(evt);
             }
         });
-        panelopr1.add(btnespesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 80, 40));
+        panelopr1.add(btnespesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 180, 30));
 
         btndivision.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btndivision.setText("/");
@@ -2017,7 +2030,7 @@ public class Principal extends javax.swing.JFrame {
                 btndivisionActionPerformed(evt);
             }
         });
-        panelopr1.add(btndivision, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 50, -1));
+        panelopr1.add(btndivision, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 50, -1));
 
         panelopr2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -2030,16 +2043,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         panelopr2.add(btnduplo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 50, 20));
-
-        btnholgura.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
-        btnholgura.setText("Holgura de calzado");
-        btnholgura.setToolTipText("Holgura");
-        btnholgura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnholguraActionPerformed(evt);
-            }
-        });
-        panelopr2.add(btnholgura, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 140, 20));
 
         btnpotencia.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnpotencia.setText("x^2");
@@ -2068,6 +2071,15 @@ public class Principal extends javax.swing.JFrame {
         });
         panelopr2.add(cbpercentil, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 80, 20));
 
+        btnholgura.setFont(new java.awt.Font("Times New Roman", 1, 13)); // NOI18N
+        btnholgura.setText("Holgura de calzado");
+        btnholgura.setToolTipText("Holgura");
+        btnholgura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnholguraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout paneloperadoresLayout = new javax.swing.GroupLayout(paneloperadores);
         paneloperadores.setLayout(paneloperadoresLayout);
         paneloperadoresLayout.setHorizontalGroup(
@@ -2075,7 +2087,11 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(paneloperadoresLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneloperadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelopr2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(paneloperadoresLayout.createSequentialGroup()
+                        .addComponent(panelopr2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnholgura)
+                        .addContainerGap())
                     .addComponent(panelopr1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         paneloperadoresLayout.setVerticalGroup(
@@ -2084,7 +2100,9 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(panelopr1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelopr2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(paneloperadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelopr2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnholgura, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2199,7 +2217,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelcalculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnfincalculo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(btnfincalculo, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                     .addComponent(btnatrascalculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2219,6 +2237,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(lblejercicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1005, 0, 50, -1));
 
         btnayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ayuda.jpg"))); // NOI18N
+        btnayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnayudaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnayuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(1059, 0, 50, 40));
 
         jMenuBar1.setEnabled(false);
@@ -2877,7 +2900,8 @@ public class Principal extends javax.swing.JFrame {
             paneldimensiones.setVisible(false);
             panelexperimentacion.setVisible(false);
             panelpuestos.setVisible(false);
-            panelinstrumento.setVisible(true);
+            panelinstrumento.setVisible(false);
+            panelpuestos.setVisible(false);
 
             //aqui comienza el codigo uerte de este panel
             llenarComboBoxDimensionesDiseno();
@@ -2886,8 +2910,14 @@ public class Principal extends javax.swing.JFrame {
             //llenarComboBoxPosiciones();
             btncalculo.setEnabled(false);
             btnreiniciar.setEnabled(false);
+//<<<<<<< HEAD
             cleanPanelCalculo();
 
+//=======
+//            cleanPanelCalculo();  
+//            clickpuestotrabajo = true;
+//            
+//>>>>>>> 30d2fb71f8451f3ccb820a1a49e2710e09c1dec7
         }
     }//GEN-LAST:event_btnpasarAcalculardisenoActionPerformed
 
@@ -3023,8 +3053,13 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lbltrabajopc.isEnabled()) {
             System.err.println("abilitado en Trabajo PC");
+//<<<<<<< HEAD
             lblfce = false;
+//=======
+//            lblbat = false;
+//>>>>>>> 30d2fb71f8451f3ccb820a1a49e2710e09c1dec7
             lbloav = false;
+            lblfce = false;
             lblmi = false;
             lblp = false;
             lblsbr = false;
@@ -3048,6 +3083,7 @@ public class Principal extends javax.swing.JFrame {
             lblmi = false;
             lblp = false;
             lblsbr = false;
+            lbltpc = false;
             inicializaComponentes();
             tabladimension.setEnabled(true);
             sptabladimensiones.setEnabled(true);
@@ -3062,11 +3098,17 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblfabricacomponentes.isEnabled()) {
             System.err.println("abilitado en fabrica de componente");
+//<<<<<<< HEAD
             lblfce = true;
+//=======
+//            lblbat = false;
+//>>>>>>> 30d2fb71f8451f3ccb820a1a49e2710e09c1dec7
             lbloav = false;
+            lblfce = true;
             lblmi = false;
             lblp = false;
             lblsbr = false;
+            lbltpc = false;
             inicializaComponentes();
             tabladimension.setEnabled(true);
             sptabladimensiones.setEnabled(true);
@@ -3081,11 +3123,17 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblmaquinaimpresion.isEnabled()) {
             System.err.println("abilitado en Maquina de Impresion");
+//<<<<<<< HEAD
             lblmi = true;
+//=======
+//            lblbat = false;
+//>>>>>>> 30d2fb71f8451f3ccb820a1a49e2710e09c1dec7
             lbloav = false;
             lblfce = false;
+            lblmi = true;
             lblp = false;
             lblsbr = false;
+            lbltpc = false;
             inicializaComponentes();
             tabladimension.setEnabled(true);
             sptabladimensiones.setEnabled(true);
@@ -3100,11 +3148,17 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblpupitre.isEnabled()) {
             System.err.println("abilitado en Pupitre");
+//<<<<<<< HEAD
             lblp = true;
+//=======
+//            lblbat = false;
+//>>>>>>> 30d2fb71f8451f3ccb820a1a49e2710e09c1dec7
             lbloav = false;
             lblfce = false;
             lblmi = false;
+            lblp = true;
             lblsbr = false;
+            lbltpc = false;
             inicializaComponentes();
             tabladimension.setEnabled(true);
             sptabladimensiones.setEnabled(true);
@@ -3119,11 +3173,17 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (lblsillaburo.isEnabled()) {
             System.err.println("abilitado en Silla buro");
+//<<<<<<< HEAD
             lblsbr = true;
+//=======
+//            lblbat = false;
+//>>>>>>> 30d2fb71f8451f3ccb820a1a49e2710e09c1dec7
             lbloav = false;
             lblfce = false;
             lblmi = false;
             lblp = false;
+            lblsbr = true;
+            lbltpc = false;
             inicializaComponentes();
             tabladimension.setEnabled(true);
             sptabladimensiones.setEnabled(true);
@@ -3289,7 +3349,7 @@ public class Principal extends javax.swing.JFrame {
         int action = JOptionPane.showOptionDialog(null, "Desea registrar el calculo realizado", "Información",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
         if (action == JOptionPane.YES_OPTION) {
-            listamodelcalculo.addElement(cbdimrelv.getSelectedItem() + " = " + expresionlogica);
+            listamodelcalculo.addElement(cbdimrelv.getSelectedItem() + " = " + expresionlogica + " = " + resultado + "cm");
             jList1.setModel(listamodelcalculo);
         }
         cleanPanelCalculo();
@@ -3357,6 +3417,8 @@ public class Principal extends javax.swing.JFrame {
         panelprincipal.setVisible(false);
         panelinstrumento.setVisible(false);
         panelposturas.setVisible(true);
+        clickpuestotrabajo = false;
+        panelpuestos.setVisible(true);
     }//GEN-LAST:event_btnatrascalculoActionPerformed
 
     private void btnfincalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfincalculoActionPerformed
@@ -3675,6 +3737,18 @@ public class Principal extends javax.swing.JFrame {
         System.out.println("di click en combo");
     }//GEN-LAST:event_jcbmuestraMousePressed
 
+    private void lblbatonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbatonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblbatonMouseClicked
+
+    private void jChBdr1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jChBdr1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jChBdr1ActionPerformed
+
+    private void btnayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnayudaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnayudaActionPerformed
+
     //*******************************************FUNCIONES AGREGADAS DE LAS OTRAS CLASES
     private void creaExpresion(String valor) {
         String expresionauxiliar = expresionlogica;
@@ -3897,7 +3971,7 @@ public class Principal extends javax.swing.JFrame {
             modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
-            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3907,7 +3981,7 @@ public class Principal extends javax.swing.JFrame {
             modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
-            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3917,7 +3991,7 @@ public class Principal extends javax.swing.JFrame {
             modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
-            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3927,7 +4001,7 @@ public class Principal extends javax.swing.JFrame {
             modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
-            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblfabricacomponentes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3937,7 +4011,7 @@ public class Principal extends javax.swing.JFrame {
             modeloMedio = controlMedio.Mostrar(lbltrabajopc.getText());
             lblsillaburo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
             muestraImagen(false);
-            //lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            lbltrabajopc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblagenciaviajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblmaquinaimpresion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             lblpupitre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -3955,8 +4029,22 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void muestraImagen(boolean isMedio) {
+//        if (isMedio) {
+//            foto = new ToolkitImage(new ByteArrayImageSource(modeloMedio.getFotoMedio()));
+//            if (lbltrabajopc.getText().equals("Silla antropométrica") || lbltrabajopc.getText().equals("Batón")) {
+//                foto = foto.getScaledInstance(lblpuestotrabajo.getWidth(), lblpuestotrabajo.getHeight(), Image.SCALE_DEFAULT);
+//                lblpuestotrabajo.setIcon(new ImageIcon(foto));
+//                foto = null;
+//            } else {
+//                foto = new ToolkitImage(new ByteArrayImageSource(modeloInstrumento.getFotoInstrumento()));
+//                foto = foto.getScaledInstance(lblpuestotrabajo.getWidth(), lblpuestotrabajo.getHeight(), Image.SCALE_DEFAULT);
+//                lblpuestotrabajo.setIcon(new ImageIcon(foto));
+//                foto = null;
+//            }
+//
+//        }
         if (isMedio) {
-            foto = new ToolkitImage(new ByteArrayImageSource(modeloMedio.getFotoMedio()));
+            foto = new ToolkitImage(new ByteArrayImageSource(modeloMedio.getFotoInstrumento()));
             foto = foto.getScaledInstance(lblpuestotrabajo.getWidth(), lblpuestotrabajo.getHeight(), Image.SCALE_DEFAULT);
             lblpuestotrabajo.setIcon(new ImageIcon(foto));
             foto = null;
@@ -3966,11 +4054,10 @@ public class Principal extends javax.swing.JFrame {
             lblpuestotrabajo.setIcon(new ImageIcon(foto));
             foto = null;
         }
-
     }
-    //******************************************
+//******************************************
 
-    //******************************************
+//******************************************
     private void llenarSujetosComboBox() {
         ActionListener[] actionListeners = jcbmuestra.getActionListeners();
         //quitando los Action listners para que no se activen automaticamente
@@ -4659,7 +4746,7 @@ public class Principal extends javax.swing.JFrame {
                     model.setRowCount(0);
                     tablamuestra.repaint();
 
-                    if (autenticado && lbl.isEnabled()) {
+                    if (autenticado && !clickpuestotrabajo && lbl.isEnabled()) {
                         habilitarLabelInstrumento();
                         //no la voy a poner null porque la voy a utilizar
                         fotoprincipal = lblinstrumentos.getIcon();
@@ -4678,10 +4765,11 @@ public class Principal extends javax.swing.JFrame {
                         panelprincipal.setVisible(false);
                         panelinstrumento.setVisible(true);
                         panelpuestos.setVisible(false);
-                        clickpuestotrabajo = true;
+                        // clickpuestotrabajo = true;
                         //}
                         txtAEnunciado.setText("");
                         txtAEnunciado.setText(modeloexp.getDescripcion());
+                        InicializaAllComponentes();
                         llenarSujetosComboBox();
                     }
                 }
@@ -4881,13 +4969,14 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void habilitaPanelInstrumentos(boolean valor) {
-        lblagenciaviajes.setEnabled(valor);
-        lbltrabajopc.setEnabled(valor);
-        lblsillaburo.setEnabled(valor);
-        lblmaquinaimpresion.setEnabled(valor);
-        lblfabricacomponentes.setEnabled(valor);
-        lblpupitre.setEnabled(valor);
-        panelpuestos.setEnabled(valor);
+//        lblagenciaviajes.setEnabled(valor);
+//        lblbaton.setEnabled(valor);
+//        lbltrabajopc.setEnabled(valor);
+//        lblsillaburo.setEnabled(valor);
+//        lblmaquinaimpresion.setEnabled(valor);
+//        lblfabricacomponentes.setEnabled(valor);
+//        lblpupitre.setEnabled(valor);
+//        panelpuestos.setEnabled(valor);
     }
 
     private void validaColumnaBoton() {

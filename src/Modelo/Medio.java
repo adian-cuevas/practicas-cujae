@@ -7,7 +7,6 @@ package Modelo;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,7 +54,6 @@ public class Medio implements Serializable {
     @Lob
     @Column(name = "foto_medio", nullable = false)
     private byte[] fotoMedio;
-
     @ManyToMany(mappedBy = "medios_dimensionesList")
     private List<Dimensiones> dimensiones_mediosList;
 
@@ -114,34 +112,8 @@ public class Medio implements Serializable {
         this.dimensiones_mediosList = dimensiones_mediosList;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.idmedio);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Medio other = (Medio) obj;
-        if (!Objects.equals(this.idmedio, other.idmedio)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Medio{" + "idmedio=" + idmedio + ", nombMedio=" + nombMedio + ", descripMedio=" + descripMedio + ", fotoMedio=" + fotoMedio + '}';
+    public byte[] getFotoInstrumento() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
